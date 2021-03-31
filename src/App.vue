@@ -1,15 +1,21 @@
 <template>
-	<img alt="Vue logo" src="./assets/logo.png" />
-	<HelloWorld notreMessage="Hello Friends" />
+	<img alt="Vue logo" src="./assets/ferme.gif" />
+	<!-- <HelloWorld not="Hello Friends" /> -->
+	<Accueil test="Salut toi"/>
+	
+	
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Accueil from './components/Accueil.vue';
+// import HelloWorld from "./components/HelloWorld.vue";
+
 
 export default {
 	name: "App",
 	components: {
-		HelloWorld,
+		// HelloWorld,
+		Accueil,
 	},
 };
 </script>

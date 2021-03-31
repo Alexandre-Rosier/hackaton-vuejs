@@ -88,9 +88,9 @@
 
 <script>
 export default {
-	name: "HelloWorld",
+	name: "Test",
 	props: {
-		not: String,
+		oups: String,
 	},
 };
 </script>
