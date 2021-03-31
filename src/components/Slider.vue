@@ -3,27 +3,27 @@
     <div class="animal">
         <div class="animal-card">
 		<img src= '../assets/goat.jpg' />
-        <p>Chèvre</p>
+        <p>La chèvre</p>
         </div>
 
         <div class="animal-card">
 		<img src= '../assets/donkey.jpg' />
-        <p>Ane</p>
+        <p>L'âne</p>
         </div>
 
         <div class="animal-card">
 		<img src= '../assets/poulet.jpg' />
-        <p>Poulet</p>
+        <p>Le poulet</p>
         </div>
 
         <div class="animal-card">
-		<img src= '../assets/pig.jpg' />
-        <p>Cochon</p>
+		<img src= '../assets/pig-47920_1280.png' />
+        <p>Le cochon</p>
         </div>
 
         <div class="animal-card">
 		<img src= '../assets/cow.jpg' />
-        <p>Vache</p>
+        <p>La vache</p>
         </div>
     </div>
 	</div>
@@ -55,7 +55,7 @@ export default {
                 {
                     id:5, 
                     name:'Cochon',
-                    url:'../assets/pig.jpg'
+                    url:'../assets/pig-47920_1280.png'
                 },
             ]
         }
@@ -65,6 +65,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.Slider {
+	background-color: rgb(234, 238, 234);
+	padding-bottom: 80px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	margin-left: 80px;
+	margin-right: 80px;
+	margin-bottom: 80px;
+	
+}
+
 .animal {
     padding-top: 80px;
     justify-content: space-around;
@@ -76,7 +87,10 @@ export default {
     border-radius: 10px;
     padding: 20px 20px 20px 20px;
     box-shadow: 10px 3px 20px orange;
-    margin-right: 30px;
+	color: rgb(35, 116, 35);
+	width:70px;
+	height: 120px;
+
     }
 h3 {
 	margin: 40px 0 0;
@@ -95,5 +109,10 @@ a {
 img {
 	width: 50px;
 	height: 50px;
+}
+
+.animal-card:hover {
+	transform: scale(1.3);
+	transition: 0.5s;
 }
 </style>
