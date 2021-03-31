@@ -1,7 +1,7 @@
 <template>
 <h1>LES ANIMAUX DE LA FERME</h1>
 	<img class="img-accueil" alt="animaux de la ferme" src="./assets/ferme.jpg" />
-	<Slider msg="I" />
+	<Slider/>
 </template>
 
 <script>

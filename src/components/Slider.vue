@@ -1,6 +1,5 @@
 <template>
 	<div class="Slider">
-		<h1>{{ msg }}</h1>
     <div class="animal">
         <div class="animal-card">
 		<img src= '../assets/goat.jpg' />
