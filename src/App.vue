@@ -1,15 +1,16 @@
 <template>
-	<img alt="Vue logo" src="./assets/logo.png" />
-	<HelloWorld notreMessage="Hello Friends" />
+<h1>LES ANIMAUX DE LA FERME</h1>
+	<img class="img-accueil" alt="animaux de la ferme" src="./assets/ferme.jpg" />
+	<Slider msg="I" />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 
+import Slider from "./components/Slider.vue";
 export default {
 	name: "App",
 	components: {
-		HelloWorld,
+		Slider,
 	},
 };
 </script>
@@ -22,5 +23,11 @@ export default {
 	text-align: center;
 	color: #2c3e50;
 	margin-top: 60px;
+}
+.img-accueil {
+	height: 200px;
+	width: 200px;
+	box-shadow: 8px 8px 10px pink;
+	border-radius: 500px;
 }
 </style>
