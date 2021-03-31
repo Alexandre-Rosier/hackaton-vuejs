@@ -2,17 +2,17 @@
 	<div class="Slider">
     <div class="animal">
         <div class="animal-card">
-		<img src= '../assets/goat.jpg' />
+		<img src= '../assets/goat.gif' />
         <p>La chèvre</p>
         </div>
 
         <div class="animal-card">
-		<img src= '../assets/donkey.jpg' />
+		<img src= '../assets/donkey.gif' />
         <p>L'âne</p>
         </div>
 
         <div class="animal-card">
-		<img src= '../assets/poulet.jpg' />
+		<img src= '../assets/poulet.gif' />
         <p>Le poulet</p>
         </div>
 
@@ -22,7 +22,7 @@
         </div>
 
         <div class="animal-card">
-		<img src= '../assets/cow.jpg' />
+		<img src= '../assets/cow.gif' />
         <p>La vache</p>
         </div>
     </div>
