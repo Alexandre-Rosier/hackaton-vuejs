@@ -45,11 +45,11 @@ export default {
     .slider {
         width : 500px;
         height : 300px;
-        margin : 100px auto 0;
+        margin : 100px 10px 0;
         overflow : hidden; 
         position : relative;
-        display: flex;
-        justify-content: center;
+        /* display: flex;
+        justify-content: center; */
     }
     .containerSlider {
         display: flex;
@@ -57,7 +57,7 @@ export default {
     .image {
         width: 500px;
         height: auto;
-        transform: translateX(-50%)
+        /* transform: translateX(-50%) */
         }
     .iconButton {
         width: 20px;
@@ -79,12 +79,12 @@ export default {
     .btnLeft {
         top: 50%;
         left: 5px;
-        transform: translateY(-50%);
+        /* transform: translateY(-50%); */
         }
     .btnRight {
         top: 50%;
         right: 5px;
-        transform: translateY(-50%);
+        /* transform: translateY(-50%); */
         }
     
 </style>
