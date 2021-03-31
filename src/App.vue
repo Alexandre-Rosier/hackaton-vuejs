@@ -1,15 +1,14 @@
 <template>
-	<img alt="Vue logo" src="./assets/logo.png" />
-	<HelloWorld notreMessage="Hello Friends" />
+	<ChickenCard notreMessage="Hello Friends" />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import ChickenCard from "./components/ChickenCard.vue";
 
 export default {
 	name: "App",
 	components: {
-		HelloWorld,
+		ChickenCard,
 	},
 };
 </script>
