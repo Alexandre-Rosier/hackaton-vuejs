@@ -4,7 +4,9 @@
 		ref="sceneContainerDonkey"
 		v-on:click="detectClickMouse"
 	>
-		<a href="#" class="btnhome">Retour</a>
+		<a href="#" class="btnhome"
+      ><img class="btnhomeimg" src="../assets/home.svg" />Retour
+    </a>
 		<div class="cardDetail" id="detailsDonkey">
 			<section class="CardFlex">
 				<div class="title">
@@ -128,8 +130,6 @@ export default {
 		detectClickMouse: function(event) {
 			mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 			mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-			// const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520");
-			// audio.play();
 			const explain = document.querySelector("#detailsDonkey");
 			explain.style.display = "block";
 		},
