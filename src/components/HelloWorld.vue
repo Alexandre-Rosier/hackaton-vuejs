@@ -1,5 +1,5 @@
 <template>
-	<div id="scene-container" ref="sceneContainer"></div>
+  <div id="scene-container" ref="sceneContainer"></div>
 </template>
 
 <script>
@@ -9,116 +9,122 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import Stats from "stats.js";
 
 export default {
-	name: "HelloWorld",
-	data() {
-		return {
-			container: null,
-			scene: null,
-			camera: null,
-			controls: null,
-			renderer: null,
-			stats: null,
-		};
-	},
-	methods: {
-		init() {
-			// set container
-			this.container = this.$refs.sceneContainer;
+  name: "HelloWorld",
+  data() {
+    return {
+      container: null,
+      scene: null,
+      camera: null,
+      controls: null,
+      renderer: null,
+      stats: null,
+    };
+  },
+  methods: {
+    init() {
+      // set container
+      this.container = this.$refs.sceneContainer;
 
-			// add stats
-			this.stats = new Stats();
-			this.container.appendChild(this.stats.dom);
+      // add stats
+      this.stats = new Stats();
+      this.container.appendChild(this.stats.dom);
 
-			// add camera
-			const fov = 60; // Field of view
-			const aspect = this.container.clientWidth / this.container.clientHeight;
-			const near = 0.1; // the near clipping plane
-			const far = 30; // the far clipping plane
-			const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-			camera.position.set(0, 5, 10);
-			this.camera = camera;
+      // add camera
+      const fov = 6; // Field of view
+      const aspect = this.container.clientWidth / this.container.clientHeight;
+      const near = 0.1; // the near clipping plane
+      const far = 30;
+      const zoom = 300; // the far clipping plane
+      const camera = new THREE.PerspectiveCamera(fov, aspect, near, far, zoom);
 
-			// create scene
-			this.scene = new THREE.Scene();
-			this.scene.background = new THREE.Color("skyblue");
+      // camera.position.set(0, 5, 10);
+      camera.position.set(0, 5, 10);
+      this.camera = camera;
 
-			// add lights
-			const ambientLight = new THREE.HemisphereLight(
-				0xffffff, // bright sky color
-				0x222222, // dim ground color
-				1 // intensity
-			);
-			const mainLight = new THREE.DirectionalLight(0xffffff, 4.0);
-			mainLight.position.set(10, 10, 10);
-			this.scene.add(ambientLight, mainLight);
+      // create scene
+      this.scene = new THREE.Scene();
+      // this.scene.background = new THREE.Color("red");
 
-			// add controls
-			this.controls = new OrbitControls(this.camera, this.container);
+      // add lights
+      const ambientLight = new THREE.HemisphereLight(
+        0xffffff, // bright sky color
+        0x222222, // dim ground color
+        1 // intensity
+      );
+      const mainLight = new THREE.DirectionalLight(0xffffff, 4.0);
+      mainLight.position.set(10, 10, 10);
+      this.scene.add(ambientLight, mainLight);
 
-			// create renderer
-			this.renderer = new THREE.WebGLRenderer({ antialias: true });
-			this.renderer.setSize(
-				this.container.clientWidth,
-				this.container.clientHeight
-			);
-			this.renderer.setPixelRatio(window.devicePixelRatio);
-			this.renderer.gammaFactor = 2.2;
-			this.renderer.outputEncoding = THREE.sRGBEncoding;
-			this.renderer.physicallyCorrectLights = true;
-			this.container.appendChild(this.renderer.domElement);
+      // add controls
+      this.controls = new OrbitControls(this.camera, this.container);
 
-			// set aspect ratio to match the new browser window aspect ratio
-			this.camera.aspect =
-				this.container.clientWidth / this.container.clientHeight;
-			this.camera.updateProjectionMatrix();
-			this.renderer.setSize(
-				this.container.clientWidth,
-				this.container.clientHeight
-			);
+      // create renderer
+      this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      this.renderer.setSize(
+        this.container.clientWidth,
+        this.container.clientHeight
+      );
+      this.renderer.setPixelRatio(window.devicePixelRatio);
+      this.renderer.gammaFactor = 2.2;
+      this.renderer.outputEncoding = THREE.sRGBEncoding;
+      this.renderer.physicallyCorrectLights = true;
+      this.container.appendChild(this.renderer.domElement);
 
-			const loader = new GLTFLoader();
+      // set aspect ratio to match the new browser window aspect ratio
+      this.camera.aspect =
+        this.container.clientWidth / this.container.clientHeight;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(
+        this.container.clientWidth,
+        this.container.clientHeight
+      );
 
-			loader.load(
-				"/three-assets/Chicken.glb",
-				(gltf) => {
-					this.scene.add(gltf.scene);
-				},
-				undefined,
-				undefined
-			);
+      const loader = new GLTFLoader();
 
-			this.renderer.setAnimationLoop(() => {
-				this.render();
-			});
-		},
-		render() {
-			this.renderer.render(this.scene, this.camera);
-			this.stats.update();
-		},
-	},
-	mounted() {
-		this.init();
-	},
+      loader.load(
+		"/three-assets/Chicken.glb",
+		
+        (gltf) => {
+          this.scene.add(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+      this.renderer.setAnimationLoop(() => {
+        this.render();
+      });
+    },
+    render() {
+      this.renderer.render(this.scene, this.camera);
+      this.stats.update();
+    },
+  },
+  mounted() {
+    this.init();
+	this.getMouseVector();
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
-	margin: 40px 0 0;
+  margin: 40px 0 0;
 }
 ul {
-	list-style-type: none;
-	padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 li {
-	display: inline-block;
-	margin: 0 10px;
+  display: inline-block;
+  margin: 0 10px;
 }
 a {
-	color: #42b983;
+  color: #42b983;
 }
 #scene-container {
-	height: 100%;
+  height: 100%;
+  background-image: url("https://images.unsplash.com/reserve/qstJZUtQ4uAjijbpLzbT_LO234824.JPG?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80");
+  background-size: cover;
 }
 </style>
