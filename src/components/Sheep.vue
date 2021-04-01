@@ -7,29 +7,26 @@
     <a href="#" class="btnhome"
       ><img class="btnhomeimg" src="../assets/home.svg" />Retour
     </a>
-    <div class="cardDetail" id="detailsSheep">
-      <section class="CardFlex">
-        <div class="title">
-          <img class="imgCard" src="../assets/goat.gif" />
-          <button
-            @click.prevent="
-              playSound('https://www.fesliyanstudios.com/play-mp3/6557')
-            "
-          >
-            <div class="pronom">la</div>
-            <div class="h1Name">CHÈVRE</div>
-          </button>
-        </div>
-        <p class="text">
-          La chèvre est un animal, <span>mammifère</span> et
-          <span>herbivore</span>. <br />
-          Elle vit parfois dans les maisons (sur les terrains) mais plus souvent
-          à la <span>ferme</span>, où elle donne du <span>lait</span>, comme la
-          <span>vache</span>, avec lequel on fait du <span>fromage</span>
-        </p>
-      </section>
-    </div>
-  </div>
+		<div class="cardDetail" id="detailsSheep">
+			<section class="CardFlex">
+				<div class="title">
+					<img class="imgCard" src="../assets/goat.gif" />
+					<button
+						@click.prevent="
+							playSound('https://www.fesliyanstudios.com/play-mp3/6557')
+						"
+					>
+						<div class="pronom">le</div>
+						<div class="h1Name">MOUTON</div>
+					</button>
+				</div>
+				<p class="text">
+					Le mouton est un <span>mammifère</span> domestique <span>herbivore</span> qui <span>bêle</span>. La femelle est la <span>brebis</span> et le mâle est le <span>bélier</span>. Il est élevé pour sa viande, son lait, sa laine, sa graisse et sa peau.
+				</p>
+			</section>
+		<div class="buttonSpeaker">  <button id="speakSheep">🔉</button>   </div>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -145,9 +142,17 @@ export default {
     },
   },
   mounted() {
-    this.init();
-  },
-};
+		this.init();
+		const speakEl = document.getElementById('speakSheep');
+
+		speakEl.addEventListener('click', speakText);
+
+		function speakText() {
+
+const utterance = new SpeechSynthesisUtterance('Le mouton est un mammifère domestique herbivore qui bêle. La femelle est la brebis et le mâle est le bélier. Il est élevé pour sa viande, son lait, sa laine, sa graisse et sa peau.');
+window.speechSynthesis.speak(utterance);
+	}
+}}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

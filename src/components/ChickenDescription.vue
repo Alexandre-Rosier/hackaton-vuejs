@@ -8,6 +8,7 @@
     </button>
     </div>
     <p class='text'>La poule est la femelle de l'espèce domestique des <span>gallinacés</span>.<br> Le mâle est le <span>coq</span>. Originaire d'Asie, il existe aujourd'hui de très nombreuses races de poules partout dans le monde.</p>
+<div class="buttonSpeaker">  <button id="speak">Text</button>   </div>
 </div>  
 </template>
 
@@ -27,7 +28,20 @@ export default {
       if(sound) {
         const audio = new Audio(sound);
         audio.play();
-    }}}}
+    }}},
+    mounted() {
 
+const speakEl = document.getElementById('speak');
+
+speakEl.addEventListener('click', speakText);
+
+function speakText() {
+
+  const utterance = new SpeechSynthesisUtterance('La vache est un animal ruminant, C.');
+  window.speechSynthesis.speak(utterance);
+}
+    }
+    }
 </script>
+
 

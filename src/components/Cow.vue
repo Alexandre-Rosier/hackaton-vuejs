@@ -29,8 +29,8 @@
 					<span>taureau</span>. <br />
 					Son petit est le <span>veau</span>.
 				</p>
-				<button>Lire la fiche</button>
-			</section>
+				</section>
+			<div class="buttonSpeaker">  <button id="speakCow">🔉</button>   </div>
 		</div>
 	</div>
 </template>
@@ -152,8 +152,16 @@ export default {
 	},
 	mounted() {
 		this.init();
-	},
-};
+		const speakEl = document.getElementById('speakCow');
+
+		speakEl.addEventListener('click', speakText);
+
+		function speakText() {
+
+const utterance = new SpeechSynthesisUtterance('La vache est un animal ru minant. C\'est un mammifère qui appartient à la famille des bovidés. Le mâle de la vache est le taureau. Son petit est le veau.');
+window.speechSynthesis.speak(utterance);
+	}
+}}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
