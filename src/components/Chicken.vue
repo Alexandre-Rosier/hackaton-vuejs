@@ -1,10 +1,30 @@
 <template>
   <div
-    id="scene-containerSheep"
-    ref="sceneContainerSheep"
+    id="scene-containerChicken"
+    ref="sceneContainerChicken"
     v-on:click="detectClickMouse"
   >
     <a href="#" class="btnhome">Retour</a>
+
+    <div class="cardDetail" id="detailsChicken">
+      <div class="title">
+        <img class="imgCard" src="../assets/poulet.gif" />
+        <button
+          @click.prevent="
+            playSound('https://www.fesliyanstudios.com/play-mp3/6512')
+          "
+        >
+          <div class="pronom">la</div>
+          <div class="h1Name">POULE</div>
+        </button>
+      </div>
+      <p class="text">
+        La poule est la femelle de l'espèce domestique des
+        <span>gallinacés</span>.<br />
+        Le mâle est le <span>coq</span>. Originaire d'Asie, il existe
+        aujourd'hui de très nombreuses races de poules partout dans le monde.
+      </p>
+    </div>
   </div>
 </template>
 
@@ -18,7 +38,7 @@ const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
 export default {
-  name: "Sheep",
+  name: "Chicken",
   data() {
     return {
       container: null,
@@ -32,14 +52,14 @@ export default {
   methods: {
     init() {
       // set container
-      this.container = this.$refs.sceneContainerSheep;
+      this.container = this.$refs.sceneContainerChicken;
 
       // add stats
       this.stats = new Stats();
       this.container.appendChild(this.stats.dom);
 
       // add camera
-      const fov = 30; // Field of view
+      const fov = 6; // Field of view
       const aspect = this.container.clientWidth / this.container.clientHeight;
       const near = 0.1; // the near clipping plane
       const far = 30; // the far clipping plane
@@ -90,7 +110,7 @@ export default {
       const loader = new GLTFLoader();
 
       loader.load(
-        "/three-assets/sheep/scene.gltf",
+        "/three-assets/Chicken.glb",
         (gltf) => {
           this.scene.add(gltf.scene);
         },
@@ -107,6 +127,9 @@ export default {
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
       const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520");
       audio.play();
+      const explain = document.querySelector("#detailsChicken");
+      explain.style.display = "block !important";
+      alert("hhlo");
     },
     render() {
       raycaster.setFromCamera(mouse, this.camera);
@@ -141,8 +164,8 @@ li {
 a {
   color: #42b983;
 }
-#scene-containerSheep {
+#scene-containerChicken {
   height: 100%;
-    position: relative;
+  position: relative;
 }
 </style>

@@ -10,28 +10,36 @@
     </div>
     <div class="Slider">
       <div class="animal">
-        <div class="animal-card">
-          <img src="../assets/goat.jpg" />
-          <p>La chèvre</p>
-        </div>
-
-        <div class="animal-card">
-          <img src="../assets/donkey.jpg" />
-          <p>L'âne</p>
-        </div>
-
-        <div class="animal-card">
-          <img src="../assets/poulet.jpg" />
-          <p>Le poulet</p>
-        </div>
-        <div class="animal-card">
-          <img src="../assets/pig-47920_1280.png" />
-          <p>Le cochon</p>
-        </div>
-        <div class="animal-card">
-          <img src="../assets/cow.jpg" />
-          <p>La vache</p>
-        </div>
+        <a href="#scene-containerSheep">
+          <div class="animal-card">
+            <img src="../assets/goat.jpg" />
+            <p>Le mouton</p>
+          </div>
+        </a>
+        <a href="#scene-containerDonkey">
+          <div class="animal-card">
+            <img src="../assets/donkey.jpg" />
+            <p>L'âne</p>
+          </div>
+        </a>
+        <a href="#scene-containerChicken">
+          <div class="animal-card">
+            <img src="../assets/poulet.jpg" />
+            <p>Le poulet</p>
+          </div>
+        </a>
+        <a href="#scene-containerPig">
+          <div class="animal-card">
+            <img src="../assets/pig-47920_1280.png" />
+            <p>Le cochon</p>
+          </div>
+        </a>
+        <a href="#scene-containerCow">
+          <div class="animal-card">
+            <img src="../assets/cow.jpg" />
+            <p>La vache</p>
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -46,8 +54,8 @@ export default {
 <style scoped>
 .accueil {
   height: 100vh;
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   justify-content: space-around;
 }
 .Slider {

@@ -3,7 +3,35 @@
     id="scene-containerCow"
     ref="sceneContainerCow"
     v-on:click="detectClickMouse"
-  ></div>
+  >
+    <a href="#" class="btnhome">Retour</a>
+    <div class="cardDetail" id="detailsCow">
+      <div class="title">
+        <img class="imgCard" src="../assets/cow.gif" />
+        <button
+          @click.prevent="
+            playSound('https://www.fesliyanstudios.com/play-mp3/6520')
+          "
+        >
+          <div class="pronom">la</div>
+          <div class="h1Name">VACHE</div>
+        </button>
+      </div>
+      <p class="text">
+        La vache est un animal
+        <span
+          @click.prevent="
+            playSound('https://www.fesliyanstudios.com/play-mp3/6520')
+          "
+          >ruminant</span
+        >. <br />
+        C'est un <span>mammifère</span> qui appartient à la famille des
+        <span>bovidés</span>. <br />Le mâle de la vache est le
+        <span>taureau</span>. <br />
+        Son petit est le <span>veau</span>.
+      </p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -14,12 +42,6 @@ import Stats from "stats.js";
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
-
-// const listener = new THREE.AudioListener();
-// const sound = new THREE.Audio(listener);
-// const loaderSound = new THREE.AudioLoader();
-
-// console.log(loader);
 
 export default {
   name: "Cow",
@@ -111,6 +133,9 @@ export default {
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
       const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520");
       audio.play();
+      const explain = document.querySelector("#detailsCow");
+      explain.style.display = "block";
+      alert("hhlo");
     },
     render() {
       raycaster.setFromCamera(mouse, this.camera);
@@ -147,5 +172,6 @@ a {
 }
 #scene-containerCow {
   height: 100%;
+  position: relative;
 }
 </style>
