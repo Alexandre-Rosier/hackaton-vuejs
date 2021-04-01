@@ -1,29 +1,30 @@
 <template>
 	<div
-		id="scene-containerSheep"
-		ref="sceneContainerSheep"
+		id="scene-containerRabbit"
+		ref="sceneContainerRabbit"
 		v-on:click="detectClickMouse"
 	>
 		<a href="#" class="btnhome">Retour</a>
-		<div class="cardDetail" id="detailsSheep">
+
+		<div class="cardDetail" id="detailsRabbit">
 			<section class="CardFlex">
 				<div class="title">
-					<img class="imgCard" src="../assets/goat.gif" />
+					<img class="imgCard" src="../assets/poulet.gif" />
 					<button
 						@click.prevent="
-							playSound('https://www.fesliyanstudios.com/play-mp3/6557')
+							playSound('https://www.fesliyanstudios.com/play-mp3/6512')
 						"
 					>
-						<div class="pronom">la</div>
-						<div class="h1Name">CHÈVRE</div>
+						Ecouter cette magnifique LApin.
+						<div class="pronom">le</div>
+						<div class="h1Name">LAPIN</div>
 					</button>
 				</div>
 				<p class="text">
-					La chèvre est un animal, <span>mammifère</span> et
-					<span>herbivore</span>. <br />
-					Elle vit parfois dans les maisons (sur les terrains) mais plus souvent
-					à la <span>ferme</span>, où elle donne du <span>lait</span>, comme la
-					<span>vache</span>, avec lequel on fait du <span>fromage</span>
+					La poule est la femelle de l'espèce domestique des
+					<span>gallinacés</span>.<br />
+					Le mâle est le <span>coq</span>. Originaire d'Asie, il existe
+					aujourd'hui de très nombreuses races de poules partout dans le monde.
 				</p>
 			</section>
 		</div>
@@ -39,7 +40,7 @@ const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
 export default {
-	name: "Sheep",
+	name: "Rabbit",
 	data() {
 		return {
 			container: null,
@@ -52,10 +53,10 @@ export default {
 	methods: {
 		init() {
 			// set container
-			this.container = this.$refs.sceneContainerSheep;
+			this.container = this.$refs.sceneContainerRabbit;
 
 			// add camera
-			const fov = 30; // Field of view
+			const fov = 6; // Field of view
 			const aspect = this.container.clientWidth / this.container.clientHeight;
 			const near = 0.1; // the near clipping plane
 			const far = 30; // the far clipping plane
@@ -101,10 +102,12 @@ export default {
 				this.container.clientHeight
 			);
 
+			// this.camera.add(listener);
+
 			const loader = new GLTFLoader();
 
 			loader.load(
-				"/three-assets/sheep/scene.gltf",
+				"/three-assets/cow/scene.gltf",
 				(gltf) => {
 					this.scene.add(gltf.scene);
 				},
@@ -121,7 +124,7 @@ export default {
 			mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 			const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520");
 			audio.play();
-			const explain = document.querySelector("#detailsSheep");
+			const explain = document.querySelector("#detailsRabbit");
 			explain.style.display = "block";
 		},
 		render() {
@@ -132,7 +135,6 @@ export default {
 				intersects[i].object.material.color.set(0xff0000);
 			}
 			this.renderer.render(this.scene, this.camera);
-			this.stats.update();
 		},
 	},
 	mounted() {
@@ -157,7 +159,7 @@ li {
 a {
 	color: #42b983;
 }
-#scene-containerSheep {
+#scene-containerRabbit {
 	height: 100%;
 	position: relative;
 }
