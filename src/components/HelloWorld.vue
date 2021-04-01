@@ -1,5 +1,9 @@
 <template>
-	<div id="scene-container" ref="sceneContainer"></div>
+	<div
+		id="scene-container"
+		ref="sceneContainer"
+		v-on:click="detectClickMouse"
+	></div>
 </template>
 
 <script>
@@ -7,6 +11,9 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import Stats from "stats.js";
+
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
 
 export default {
 	name: "HelloWorld",
@@ -18,6 +25,7 @@ export default {
 			controls: null,
 			renderer: null,
 			stats: null,
+			name: "Objet 3D",
 		};
 	},
 	methods: {
@@ -30,7 +38,7 @@ export default {
 			this.container.appendChild(this.stats.dom);
 
 			// add camera
-			const fov = 60; // Field of view
+			const fov = 6; // Field of view
 			const aspect = this.container.clientWidth / this.container.clientHeight;
 			const near = 0.1; // the near clipping plane
 			const far = 30; // the far clipping plane
@@ -91,7 +99,18 @@ export default {
 				this.render();
 			});
 		},
+
+		detectClickMouse: function(event) {
+			mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+			mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+		},
 		render() {
+			raycaster.setFromCamera(mouse, this.camera);
+			const intersects = raycaster.intersectObjects(this.scene.children, true);
+			// console.log(intersects);
+			for (let i = 0; i < intersects.length; i++) {
+				intersects[i].object.material.color.set(0xff0000);
+			}
 			this.renderer.render(this.scene, this.camera);
 			this.stats.update();
 		},
