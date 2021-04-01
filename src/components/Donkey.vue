@@ -39,12 +39,12 @@ export default {
       const near = 1; // the near clipping plane
       const far = 2000; // the far clipping plane
       const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-      camera.position.set(-8 ,60, 20);
+      camera.position.set(13 ,70, 20);
       this.camera = camera;
 
       // create scene
       this.scene = new THREE.Scene();
-
+this.scene.background = new THREE.Color("lightgray");
       // add lights
       const ambientLight = new THREE.HemisphereLight(
         0xffffff, // bright sky color

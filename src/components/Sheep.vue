@@ -137,7 +137,5 @@ a {
 }
 #scene-containerSheep {
   height: 100%;
-
-
 }
 </style>
