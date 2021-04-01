@@ -6,6 +6,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+
 import Stats from "stats.js";
 
 // const raycaster = new THREE.Raycaster();
@@ -33,12 +34,12 @@ export default {
       this.container.appendChild(this.stats.dom);
 
       // add camera
-      const fov = 6; // Field of view
+      const fov = 80; // Field of view
       const aspect = this.container.clientWidth / this.container.clientHeight;
-      const near = 0.1; // the near clipping plane
-      const far = 30; // the far clipping plane
+      const near = 0.5; // the near clipping plane
+      const far = 50; // the far clipping plane
       const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-      camera.position.set(0, 5, 10);
+      camera.position.set(10, 20, 20);
       this.camera = camera;
 
       // create scene
@@ -80,9 +81,11 @@ export default {
       );
 
       const loader = new GLTFLoader();
-
+      //   const dracoLoader = new DRACOLoader();
+      //   dracoLoader.setDecoderPath("/examples/js/libs/draco/");
+      //   loader.setDRACOLoader(dracoLoader);
       loader.load(
-        "/three-assets/Chicken.glb",
+        "/three-assets/cow/scene.gltf",
         (gltf) => {
           this.scene.add(gltf.scene);
         },
@@ -100,9 +103,9 @@ export default {
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     },
     render() {
-    //   raycaster.setFromCamera(mouse, this.camera);
-    //   const intersects = raycaster.intersectObjects(this.scene.children, true);
-    //   console.log(intersects);
+      //   raycaster.setFromCamera(mouse, this.camera);
+      //   const intersects = raycaster.intersectObjects(this.scene.children, true);
+      //   console.log(intersects);
       // for (let i = 0; i < intersects.length; i++) {
       //   intersects[i].object.material.color.set(0xff0000);
       // }
@@ -133,6 +136,6 @@ a {
   color: #42b983;
 }
 #scene-containerCow {
-  height: 100%;
+  height: 100vh;
 }
 </style>

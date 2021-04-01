@@ -3,19 +3,25 @@
     <Slider />
     <HelloWorld />
     <Cow/>
-      </div>
+    <Sheep/>
+    <Donkey/>
+  </div>
 </template>
 
 <script>
 import Slider from "./components/Slider.vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import Cow from "./components/Cow.vue";
+import Sheep from "./components/Sheep.vue";
+import Donkey from './components/Donkey.vue'
 export default {
   name: "App",
   components: {
     Slider,
     HelloWorld,
-    Cow
+    Cow,
+    Sheep,
+    Donkey
   },
 };
 </script>
