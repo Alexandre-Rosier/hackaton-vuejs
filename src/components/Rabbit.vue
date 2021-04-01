@@ -51,6 +51,12 @@ export default {
 		};
 	},
 	methods: {
+		playSound(sound) {
+			if (sound) {
+				const audio = new Audio(sound);
+				audio.play();
+			}
+		},
 		init() {
 			// set container
 			this.container = this.$refs.sceneContainerRabbit;
@@ -107,7 +113,7 @@ export default {
 			const loader = new GLTFLoader();
 
 			loader.load(
-				"/three-assets/cow/scene.gltf",
+				"/three-assets/co/scene.gltf",
 				(gltf) => {
 					this.scene.add(gltf.scene);
 				},
@@ -122,8 +128,6 @@ export default {
 		detectClickMouse: function(event) {
 			mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 			mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-			const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520");
-			audio.play();
 			const explain = document.querySelector("#detailsRabbit");
 			explain.style.display = "block";
 		},

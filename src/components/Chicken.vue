@@ -5,7 +5,6 @@
 		v-on:click="detectClickMouse"
 	>
 		<a href="#" class="btnhome">Retour</a>
-
 		<div class="cardDetail" id="detailsChicken">
 			<section class="CardFlex">
 				<div class="title">
@@ -51,6 +50,12 @@ export default {
 		};
 	},
 	methods: {
+		playSound(sound) {
+			if (sound) {
+				const audio = new Audio(sound);
+				audio.play();
+			}
+		},
 		init() {
 			// set container
 			this.container = this.$refs.sceneContainerChicken;
@@ -122,8 +127,6 @@ export default {
 		detectClickMouse: function(event) {
 			mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 			mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-			const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520");
-			audio.play();
 			const explain = document.querySelector("#detailsChicken");
 			explain.style.display = "block";
 		},
@@ -132,7 +135,7 @@ export default {
 			const intersects = raycaster.intersectObjects(this.scene.children, true);
 
 			for (let i = 0; i < intersects.length; i++) {
-				intersects[i].object.material.color.set(0xff0000);
+				// intersects[i].object.material.color.set(0xff0000);
 			}
 			this.renderer.render(this.scene, this.camera);
 		},

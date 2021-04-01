@@ -87,12 +87,12 @@ button .pronom {
 	color: grey;
 }
 .text {
-	font-size: 1.2vh;
+	font-size: 1.3rem;
 }
 
 span {
 	font-weight: bolder;
-	font-size: 1.5vh;
+	font-size: 1.3rem;
 	color: rgb(18, 214, 18);
 }
 
