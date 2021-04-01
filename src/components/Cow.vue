@@ -39,7 +39,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-// import Stats from "stats.js";
+
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -53,7 +53,6 @@ export default {
 			camera: null,
 			controls: null,
 			renderer: null,
-			// stats: null,
 		};
 	},
 	methods: {
@@ -67,9 +66,7 @@ export default {
 			// set container
 			this.container = this.$refs.sceneContainerCow;
 
-			// add stats
-			// this.stats = new Stats();
-			// this.container.appendChild(this.stats.dom);
+
 
 			// add camera
 			const fov = 80; // Field of view
