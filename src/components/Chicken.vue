@@ -11,7 +11,7 @@
 		<div class="cardDetail" id="detailsChicken">
 			<section class="CardFlex">
 				<div class="title">
-					<img class="imgCard" src="../assets/poulet.gif" />
+					<!-- <img class="imgCard" src="../assets/poulet.gif" /> -->
 					<button
 						@click.prevent="
 							playSound('https://www.fesliyanstudios.com/play-mp3/6512')

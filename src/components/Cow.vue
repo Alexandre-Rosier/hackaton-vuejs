@@ -10,7 +10,7 @@
 		<div class="cardDetail" id="detailsCow">
 			<section class="CardFlex">
 				<div class="title">
-					<img class="imgCard" src="../assets/cow.gif" />
+					<!-- <img class="imgCard" src="../assets/cow.gif" /> -->
 					<button
 						@click.prevent="
 							playSound('https://www.fesliyanstudios.com/play-mp3/6520')
@@ -40,7 +40,6 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
@@ -65,8 +64,6 @@ export default {
 		init() {
 			// set container
 			this.container = this.$refs.sceneContainerCow;
-
-
 
 			// add camera
 			const fov = 80; // Field of view

@@ -41,6 +41,7 @@ body,
 	padding: 0;
 	height: 100%;
 	width: 100%;
+	background: #87ceeb85;
 }
 #app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;

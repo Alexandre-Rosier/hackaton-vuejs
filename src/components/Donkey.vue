@@ -5,12 +5,12 @@
 		v-on:click="detectClickMouse"
 	>
 		<a href="#" class="btnhome"
-      ><img class="btnhomeimg" src="../assets/home.svg" />Retour
-    </a>
+			><img class="btnhomeimg" src="../assets/home.svg" />Retour
+		</a>
 		<div class="cardDetail" id="detailsDonkey">
 			<section class="CardFlex">
 				<div class="title">
-					<img class="imgCard" src="../assets/donkey.gif" />
+					<!-- <img class="imgCard" src="../assets/donkey.gif" /> -->
 					<button
 						@click.prevent="
 							playSound('https://bigsoundbank.com/UPLOAD/mp3/1551.mp3')

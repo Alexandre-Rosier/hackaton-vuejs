@@ -1,6 +1,6 @@
 <template>
 	<div class="accueil">
-		<h1 class="title-accueil">LES ANIMAUX DE LA FERME</h1>
+		<h1 class="title-accueil">Les animaux de la ferme</h1>
 		<div class="container-img-accueil">
 			<img
 				class="img-accueil"
@@ -58,6 +58,10 @@ export default {
 	flex-direction: column;
 	justify-content: space-around;
 }
+.title-accueil {
+	font-family: "Dancing Script", cursive;
+	font-size: 6rem;
+}
 .Slider {
 	background-color: rgb(234, 238, 234);
 	padding-bottom: 80px;
@@ -76,6 +80,8 @@ export default {
 	justify-content: space-around;
 	display: flex;
 	margin: 0 10px;
+	margin: auto;
+	max-width: 920px;
 }
 .animal-card {
 	border: 1px solid orange;
@@ -83,9 +89,13 @@ export default {
 	padding: 20px 20px 20px 20px;
 	box-shadow: 10px 3px 20px rgba(255, 166, 0, 0.486);
 	color: rgb(35, 116, 35);
-	width: 70px;
-	height: 120px;
+	width: 120px;
+	height: 180px;
 	background: white;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	display: flex;
 }
 h3 {
 	margin: 40px 0 0;
@@ -102,8 +112,8 @@ a {
 	color: #42b983;
 }
 img {
-	width: 50px;
-	height: 50px;
+	width: 90px;
+	height: 90px;
 }
 
 .animal-card:hover {
