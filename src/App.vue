@@ -115,10 +115,16 @@ audio {
 }
 .btnhome {
 	z-index: 100;
-	border: 1px solid red;
-	background-color: green;
 	position: absolute;
-	top: 0;
 	left: 50%;
+	display: flex;
+	flex-direction: column;
+	padding: 2px 10px 8px 10px;
+	border-radius: 0px 0px 20px 20px;
+	transform: translateX(-50%);
+	background-color: rgba(255, 255, 255, 0.774);
+	text-decoration: none;
+	letter-spacing: 1.3px;
+	font-weight: 600;
 }
 </style>

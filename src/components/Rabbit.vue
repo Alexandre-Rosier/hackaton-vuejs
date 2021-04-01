@@ -4,7 +4,9 @@
 		ref="sceneContainerRabbit"
 		v-on:click="detectClickMouse"
 	>
-		<a href="#" class="btnhome">Retour</a>
+		<a href="#" class="btnhome"
+			><img class="btnhomeimg" src="../assets/home.svg" />Retour
+		</a>
 
 		<div class="cardDetail" id="detailsRabbit">
 			<section class="CardFlex">
@@ -15,7 +17,7 @@
 							playSound('https://www.fesliyanstudios.com/play-mp3/6512')
 						"
 					>
-						Ecouter cette magnifique LApin.
+						Ecouter cette magnifique Lapin SILENCIEUX.
 						<div class="pronom">le</div>
 						<div class="h1Name">LAPIN</div>
 					</button>
@@ -136,7 +138,7 @@ export default {
 			const intersects = raycaster.intersectObjects(this.scene.children, true);
 
 			for (let i = 0; i < intersects.length; i++) {
-				intersects[i].object.material.color.set(0xff0000);
+				// intersects[i].object.material.color.set(0xff0000);
 			}
 			this.renderer.render(this.scene, this.camera);
 		},
