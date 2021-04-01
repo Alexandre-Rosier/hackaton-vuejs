@@ -21,11 +21,12 @@
 				</div>
 				<p class="text">
 					L'âne est un <span>mammifère</span> appartenant à la famille des
-					<span>équidés</span>, comme son proche cousin, le <span>cheval</span>.
-					<br />La femelle est <span>l'Anesse</span> et les bébés sont les
-					<span>ânons</span>.<span>veau</span>.
+					<span>équidés</span>.<br /> Son proche cousin est le <span>cheval</span>.
+					<br />La femelle est <span>l'Anesse</span> <br /> Les bébés sont les
+					<span>ânons</span>.
 				</p>
 			</section>
+			<div class="buttonSpeaker">  <button id="speakDonkey">🔉</button>   </div>
 		</div>
 	</div>
 </template>
@@ -144,8 +145,16 @@ export default {
 	},
 	mounted() {
 		this.init();
-	},
-};
+		const speakEl = document.getElementById('speakDonkey');
+
+		speakEl.addEventListener('click', speakText);
+
+		function speakText() {
+
+const utterance = new SpeechSynthesisUtterance('L\'âne est un mammifère appartenant à la famille des équidés. Son proche cousin est le cheval. La femelle est l\'Anesse. Les bébés sont les ânons.');
+window.speechSynthesis.speak(utterance);
+	}
+}}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

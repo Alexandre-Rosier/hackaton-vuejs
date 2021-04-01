@@ -8,7 +8,7 @@
     </button>
     
     </div>
-    <p class='text'>La vache est un animal <span @click.prevent="playSound('https://www.fesliyanstudios.com/play-mp3/6520')">ruminant</span>. <br> C'est un <span>mammifère</span> qui appartient à la famille des <span>bovidés</span>. <br>Le mâle de la vache est le <span>taureau</span>. <br> Son petit est le <span>veau</span>. </p>
+    <p class='text'>La vache est un animal <span>ruminant</span>. <br> C'est un <span>mammifère</span> qui appartient à la famille des <span>bovidés</span>. <br>Le mâle de la vache est le <span>taureau</span>. <br> Son petit est le <span>veau</span>. </p>
 </div>  
 </template>
 
