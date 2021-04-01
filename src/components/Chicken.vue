@@ -3,14 +3,40 @@
 		id="scene-containerChicken"
 		ref="sceneContainerChicken"
 		v-on:click="detectClickMouse"
-	></div>
+	>
+		<a href="#" class="btnhome"
+			><img class="btnhomeimg" src="../assets/home.svg" />Retour
+		</a>
+
+		<div class="cardDetail" id="detailsChicken">
+			<section class="CardFlex">
+				<div class="title">
+					<img class="imgCard" src="../assets/poulet.gif" />
+					<button
+						@click.prevent="
+							playSound('https://www.fesliyanstudios.com/play-mp3/6512')
+						"
+					>
+						Ecouter cette magnifique Poule.
+						<div class="pronom">la</div>
+						<div class="h1Name">POULE</div>
+					</button>
+				</div>
+				<p class="text">
+					La poule est la femelle de l'espèce domestique des
+					<span>gallinacés</span>.<br />
+					Le mâle est le <span>coq</span>. Originaire d'Asie, il existe
+					aujourd'hui de très nombreuses races de poules partout dans le monde.
+				</p>
+			</section>
+		</div>
+	</div>
 </template>
 
 <script>
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import Stats from "stats.js";
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -24,17 +50,18 @@ export default {
 			camera: null,
 			controls: null,
 			renderer: null,
-			stats: null,
 		};
 	},
 	methods: {
+		playSound(sound) {
+			if (sound) {
+				const audio = new Audio(sound);
+				audio.play();
+			}
+		},
 		init() {
 			// set container
-			this.container = this.$refs.sceneContainer;
-
-			// add stats
-			this.stats = new Stats();
-			this.container.appendChild(this.stats.dom);
+			this.container = this.$refs.sceneContainerChicken;
 
 			// add camera
 			const fov = 6; // Field of view
@@ -103,17 +130,17 @@ export default {
 		detectClickMouse: function(event) {
 			mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 			mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-			const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520");
-			audio.play();
+			const explain = document.querySelector("#detailsChicken");
+			explain.style.display = "block";
 		},
 		render() {
 			raycaster.setFromCamera(mouse, this.camera);
 			const intersects = raycaster.intersectObjects(this.scene.children, true);
+
 			for (let i = 0; i < intersects.length; i++) {
-				intersects[i].object.material.color.set(0xff0000);
+				// intersects[i].object.material.color.set(0xff0000);
 			}
 			this.renderer.render(this.scene, this.camera);
-			this.stats.update();
 		},
 	},
 	mounted() {
@@ -138,7 +165,8 @@ li {
 a {
 	color: #42b983;
 }
-#scene-container {
+#scene-containerChicken {
 	height: 100%;
+	position: relative;
 }
 </style>

@@ -3,23 +3,42 @@
 		id="scene-containerDonkey"
 		ref="sceneContainerDonkey"
 		v-on:click="detectClickMouse"
-	></div>
+	>
+		<a href="#" class="btnhome"
+      ><img class="btnhomeimg" src="../assets/home.svg" />Retour
+    </a>
+		<div class="cardDetail" id="detailsDonkey">
+			<section class="CardFlex">
+				<div class="title">
+					<img class="imgCard" src="../assets/donkey.gif" />
+					<button
+						@click.prevent="
+							playSound('https://bigsoundbank.com/UPLOAD/mp3/1551.mp3')
+						"
+					>
+						Ecouter ce magnifique Hmal.
+						<div class="pronom">l'</div>
+						<div class="h1Name">ANE</div>
+					</button>
+				</div>
+				<p class="text">
+					L'âne est un <span>mammifère</span> appartenant à la famille des
+					<span>équidés</span>, comme son proche cousin, le <span>cheval</span>.
+					<br />La femelle est <span>l'Anesse</span> et les bébés sont les
+					<span>ânons</span>.<span>veau</span>.
+				</p>
+			</section>
+		</div>
+	</div>
 </template>
 
 <script>
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import Stats from "stats.js";
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
-
-// const listener = new THREE.AudioListener();
-// const sound = new THREE.Audio(listener);
-// const loaderSound = new THREE.AudioLoader();
-
-// console.log(loader);
 
 export default {
 	name: "Donkey",
@@ -30,26 +49,27 @@ export default {
 			camera: null,
 			controls: null,
 			renderer: null,
-			stats: null,
 		};
 	},
 	methods: {
+		playSound(sound) {
+			if (sound) {
+				const audio = new Audio(sound);
+				audio.play();
+			}
+		},
 		init() {
 			// set container
 			this.container = this.$refs.sceneContainerDonkey;
 
-			// add stats
-			this.stats = new Stats();
-			this.container.appendChild(this.stats.dom);
-
 			// add camera
-      const fov = 80; // Field of view
-      const aspect = this.container.clientWidth / 50;
-      const near = 1; // the near clipping plane
-      const far = 2000; // the far clipping plane
-      const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-      camera.position.set(13 ,70, 20);
-      this.camera = camera;
+			const fov = 80; // Field of view
+			const aspect = this.container.clientWidth / 50;
+			const near = 1; // the near clipping plane
+			const far = 2000; // the far clipping plane
+			const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+			camera.position.set(13, 70, 20);
+			this.camera = camera;
 
 			// create scene
 			this.scene = new THREE.Scene();
@@ -109,18 +129,17 @@ export default {
 		detectClickMouse: function(event) {
 			mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 			mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-			const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520");
-			audio.play();
+			const explain = document.querySelector("#detailsDonkey");
+			explain.style.display = "block";
 		},
 		render() {
 			raycaster.setFromCamera(mouse, this.camera);
 			const intersects = raycaster.intersectObjects(this.scene.children, true);
 
 			for (let i = 0; i < intersects.length; i++) {
-				intersects[i].object.material.color.set(0xff0000);
+				//intersects[i].object.material.color.set(0xff0000);
 			}
 			this.renderer.render(this.scene, this.camera);
-			this.stats.update();
 		},
 	},
 	mounted() {
@@ -147,5 +166,6 @@ a {
 }
 #scene-containerDonkey {
 	height: 100%;
+	position: relative;
 }
 </style>
