@@ -4,7 +4,9 @@
     ref="sceneContainerRabbit"
     v-on:click="detectClickMouse"
   >
-    <a href="#" class="btnhome">Retour</a>
+    <a href="#" class="btnhome"
+      ><img class="btnhomeimg" src="../assets/home.svg" />Retour
+    </a>
 
     <div class="cardDetail" id="detailsRabbit">
       <section class="CardFlex">
