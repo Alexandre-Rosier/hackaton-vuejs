@@ -16,7 +16,7 @@
 							playSound('https://bigsoundbank.com/UPLOAD/mp3/1551.mp3')
 						"
 					>
-						Ecouter ce magnifique Hmal.
+						Ecouter ce magnifique âne.
 						<div class="pronom">l'</div>
 						<div class="h1Name">ANE</div>
 					</button>
@@ -63,12 +63,12 @@ export default {
 			this.container = this.$refs.sceneContainerDonkey;
 
 			// add camera
-			const fov = 80; // Field of view
+			const fov = 90; // Field of view
 			const aspect = this.container.clientWidth / 50;
 			const near = 1; // the near clipping plane
 			const far = 2000; // the far clipping plane
 			const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-			camera.position.set(13, 70, 20);
+			camera.position.set(80, 50, 50);
 			this.camera = camera;
 
 			// create scene

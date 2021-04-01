@@ -72,12 +72,12 @@ export default {
 			// this.container.appendChild(this.stats.dom);
 
 			// add camera
-			const fov = 80; // Field of view
+			const fov = 110; // Field of view
 			const aspect = this.container.clientWidth / this.container.clientHeight;
 			const near = 0.5; // the near clipping plane
 			const far = 50; // the far clipping plane
 			const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-			camera.position.set(10, 20, 20);
+			camera.position.set(-25, 20, 20);
 			this.camera = camera;
 
 			// create scene
