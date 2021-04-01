@@ -9,7 +9,7 @@
     </div>
     <p class='text'>La poule est la femelle de l'espèce domestique des <span>gallinacés</span>.<br> Le mâle est le <span>coq</span>. Originaire d'Asie, il existe aujourd'hui de très nombreuses races de poules partout dans le monde.</p>
 </div>  
-
+</template>
 
 <script>
 export default {
