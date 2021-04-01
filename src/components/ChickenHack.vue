@@ -1,5 +1,9 @@
 <template>
-	<div id="scene-container" ref="sceneContainer"></div>
+	<div
+		id="scene-container"
+		ref="sceneContainer"
+		v-on:click="detectClickMouse"
+	></div>
 </template>
 
 <script>
@@ -8,8 +12,17 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import Stats from "stats.js";
 
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+// const listener = new THREE.AudioListener();
+// const sound = new THREE.Audio(listener);
+// const loaderSound = new THREE.AudioLoader();
+
+// console.log(loader);
+
 export default {
-	name: "ChickenCard",
+	name: "Chickenhack",
 	data() {
 		return {
 			container: null,
@@ -30,7 +43,7 @@ export default {
 			this.container.appendChild(this.stats.dom);
 
 			// add camera
-			const fov = 60; // Field of view
+			const fov = 6; // Field of view
 			const aspect = this.container.clientWidth / this.container.clientHeight;
 			const near = 0.1; // the near clipping plane
 			const far = 30; // the far clipping plane
@@ -76,22 +89,37 @@ export default {
 				this.container.clientHeight
 			);
 
+			// this.camera.add(listener);
+
 			const loader = new GLTFLoader();
 
 			loader.load(
-				"/three-assets/RobotExpressive.glb",
+				"/three-assets/Chicken.glb",
 				(gltf) => {
 					this.scene.add(gltf.scene);
 				},
 				undefined,
 				undefined
 			);
+			this.renderer.setAnimationLoop(() => {
+				this.render();
+			});
+		},
 
-			// this.renderer.setAnimationLoop(() => {
-			// 	this.render();
-			// });
+		detectClickMouse: function(event) {
+			mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+			mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+			const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520"); // path to file
+			audio.play();
 		},
 		render() {
+			raycaster.setFromCamera(mouse, this.camera);
+			const intersects = raycaster.intersectObjects(this.scene.children, true);
+
+			// console.log(intersects);
+			for (let i = 0; i < intersects.length; i++) {
+				intersects[i].object.material.color.set(0xff0000);
+			}
 			this.renderer.render(this.scene, this.camera);
 			this.stats.update();
 		},
