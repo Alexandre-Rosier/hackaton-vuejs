@@ -15,8 +15,14 @@ import Stats from "stats.js";
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
+// const listener = new THREE.AudioListener();
+// const sound = new THREE.Audio(listener);
+// const loaderSound = new THREE.AudioLoader();
+
+// console.log(loader);
+
 export default {
-	name: "HelloWorld",
+	name: "Chickenhack",
 	data() {
 		return {
 			container: null,
@@ -25,7 +31,6 @@ export default {
 			controls: null,
 			renderer: null,
 			stats: null,
-			name: "Objet 3D",
 		};
 	},
 	methods: {
@@ -84,6 +89,8 @@ export default {
 				this.container.clientHeight
 			);
 
+			// this.camera.add(listener);
+
 			const loader = new GLTFLoader();
 
 			loader.load(
@@ -94,7 +101,6 @@ export default {
 				undefined,
 				undefined
 			);
-
 			this.renderer.setAnimationLoop(() => {
 				this.render();
 			});
@@ -103,11 +109,13 @@ export default {
 		detectClickMouse: function(event) {
 			mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 			mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+			const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520");
+			audio.play();
 		},
 		render() {
 			raycaster.setFromCamera(mouse, this.camera);
 			const intersects = raycaster.intersectObjects(this.scene.children, true);
-			// console.log(intersects);
+
 			for (let i = 0; i < intersects.length; i++) {
 				intersects[i].object.material.color.set(0xff0000);
 			}
