@@ -1,14 +1,16 @@
 <template>
 	<div class="accueil">
 		<h1 class="title-accueil">Les animaux de la ferme</h1>
+
 		<div class="container-img-accueil">
-			<img
+			<!-- <img
 				class="img-accueil"
 				alt="animaux de la ferme"
 				src="../assets/ferme.jpg"
-			/>
+			/> -->
 		</div>
 		<div class="Slider">
+			<h2>Choisis un animal de la ferme</h2>
 			<div class="animal">
 				<a href="#scene-containerSheep">
 					<div class="animal-card">
@@ -62,13 +64,24 @@ export default {
 	font-family: "Dancing Script", cursive;
 	font-size: 6rem;
 }
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 .Slider {
-	background-color: rgb(234, 238, 234);
-	padding-bottom: 80px;
-	border-radius: 5px;
+	background-color: rgba(234, 238, 234, 0.609);
+	padding: 80px;
+	border-radius: 15px;
 	margin-left: 80px;
 	margin-right: 80px;
 	margin-bottom: 80px;
+	animation: fadeIn 5s ease;
 }
 
 .Slider a {
@@ -76,7 +89,6 @@ export default {
 }
 
 .animal {
-	padding-top: 80px;
 	justify-content: space-around;
 	display: flex;
 	margin: 0 10px;
