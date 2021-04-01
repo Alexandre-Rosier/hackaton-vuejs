@@ -17,14 +17,12 @@
             <div class="h1Name">LAPIN</div>
         </div>
         <p class="text">
-          La poule est la femelle de l'espèce domestique des
-          <span>gallinacés</span>.<br />
-          Le mâle est le <span>coq</span>. Originaire d'Asie, il existe
-          aujourd'hui de très nombreuses races de poules partout dans le monde.
-        </p>
-      </section>
-    </div>
-  </div>
+				Le lapin est un petit <span>mammifère</span> proche du <span>lièvre</span>. Il est <span>herbivore</span> et appartient à la famille des <span>léporidés</span>. On le reconnait à ses grandes oreilles, son petit corps poilu, sa petite queue touffue et son petit <span>museau</span> qu'il remue.
+				</p>
+			</section>
+		<div class="buttonSpeaker">  <button id="speakRabbit">🔉</button>   </div>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -138,9 +136,17 @@ export default {
     },
   },
   mounted() {
-    this.init();
-  },
-};
+		this.init();
+		const speakEl = document.getElementById('speakRabbit');
+
+		speakEl.addEventListener('click', speakText);
+
+		function speakText() {
+
+const utterance = new SpeechSynthesisUtterance('Le lapin est un petit mammifère proche du lièvre. Il est herbivore et appartient à la famille des léporidés. On le reconnait à ses grandes oreilles. son petit corps poilu. sa petite queue touffue et son petit museau qu\'il remue.');
+window.speechSynthesis.speak(utterance);
+	}
+}}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

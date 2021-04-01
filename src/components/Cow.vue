@@ -29,8 +29,8 @@
 					<span>taureau</span>. <br />
 					Son petit est le <span>veau</span>.
 				</p>
-				<button>Lire la fiche</button>
-			</section>
+				</section>
+			<div class="buttonSpeaker">  <button id="speakCow">🔉</button>   </div>
 		</div>
 	</div>
 </template>
@@ -39,7 +39,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-// import Stats from "stats.js";
+
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -53,7 +53,6 @@ export default {
 			camera: null,
 			controls: null,
 			renderer: null,
-			// stats: null,
 		};
 	},
 	methods: {
@@ -67,9 +66,7 @@ export default {
 			// set container
 			this.container = this.$refs.sceneContainerCow;
 
-			// add stats
-			// this.stats = new Stats();
-			// this.container.appendChild(this.stats.dom);
+
 
 			// add camera
 			const fov = 110; // Field of view
@@ -155,8 +152,16 @@ export default {
 	},
 	mounted() {
 		this.init();
-	},
-};
+		const speakEl = document.getElementById('speakCow');
+
+		speakEl.addEventListener('click', speakText);
+
+		function speakText() {
+
+const utterance = new SpeechSynthesisUtterance('La vache est un animal ru minant. C\'est un mammifère qui appartient à la famille des bovidés. Le mâle de la vache est le taureau. Son petit est le veau.');
+window.speechSynthesis.speak(utterance);
+	}
+}}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -9,6 +9,7 @@
     
     </div>
     <p class='text'>L'âne est un <span>mammifère</span> appartenant à la famille des <span>équidés</span>, comme son proche cousin, le <span>cheval</span>. <br>La femelle est <span>l'Anesse</span> et les bébés sont les <span>ânons</span>.<span>veau</span>. </p>
+<div class="buttonSpeaker">  <button id="speakDonkey">Text</button>   </div>
 </div>  
 </template>
 
@@ -28,7 +29,19 @@ export default {
       if(sound) {
         const audio = new Audio(sound);
         audio.play();
-    }}}}
+    }}},
+    mounted() {
 
+const speakEl = document.getElementById('speakDonkey');
+
+speakEl.addEventListener('click', speakText);
+
+function speakText() {
+
+  const utterance = new SpeechSynthesisUtterance('La vache est un animal ruminant, C.');
+  window.speechSynthesis.speak(utterance);
+}
+    }
+    }
 </script>
 
