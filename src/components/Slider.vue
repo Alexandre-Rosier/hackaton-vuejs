@@ -30,7 +30,7 @@
 				</a>
 				<a href="#scene-containerRabbit">
 					<div class="animal-card">
-						<img src="../assets/pig-47920_1280.png" />
+						<img src="../assets/rabbit.jpg" />
 						<p>Lapin</p>
 					</div>
 				</a>

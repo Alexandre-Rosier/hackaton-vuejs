@@ -129,8 +129,6 @@ export default {
 		detectClickMouse: function(event) {
 			mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 			mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-			// const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520");
-			// audio.play();
 			const explain = document.querySelector("#detailsDonkey");
 			explain.style.display = "block";
 		},
