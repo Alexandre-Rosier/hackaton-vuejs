@@ -1,35 +1,33 @@
 <template>
   <div
-    id="scene-containerCow"
-    ref="sceneContainerCow"
+    id="scene-containerRabbit"
+    ref="sceneContainerRabbit"
     v-on:click="detectClickMouse"
   >
     <a href="#" class="btnhome"
       ><img class="btnhomeimg" src="../assets/home.svg" />Retour
     </a>
-    <div class="cardDetail" id="detailsCow">
+
+    <div class="cardDetail" id="detailsRabbit">
       <section class="CardFlex">
         <div class="title">
-          <img class="imgCard" src="../assets/cow.gif" />
+          <img class="imgCard" src="../assets/poulet.gif" />
           <button
             @click.prevent="
-              playSound('https://www.fesliyanstudios.com/play-mp3/6520')
+              playSound('https://www.fesliyanstudios.com/play-mp3/6512')
             "
           >
-            Ecouter cette magnifique vache.
-            <div class="pronom">la</div>
-            <div class="h1Name">VACHE</div>
+            Ecouter cette magnifique Lapin SILENCIEUX.
+            <div class="pronom">le</div>
+            <div class="h1Name">LAPIN</div>
           </button>
         </div>
         <p class="text">
-          La vache est un animal
-          <span>ruminant</span>. <br />
-          C'est un <span>mammifère</span> qui appartient à la famille des
-          <span>bovidés</span>. <br />Le mâle de la vache est le
-          <span>taureau</span>. <br />
-          Son petit est le <span>veau</span>.
+          La poule est la femelle de l'espèce domestique des
+          <span>gallinacés</span>.<br />
+          Le mâle est le <span>coq</span>. Originaire d'Asie, il existe
+          aujourd'hui de très nombreuses races de poules partout dans le monde.
         </p>
-        <button>Lire la fiche</button>
       </section>
     </div>
   </div>
@@ -39,13 +37,12 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-// import Stats from "stats.js";
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
 export default {
-  name: "Cow",
+  name: "Rabbit",
   data() {
     return {
       container: null,
@@ -53,36 +50,25 @@ export default {
       camera: null,
       controls: null,
       renderer: null,
-      // stats: null,
     };
   },
   methods: {
-    playSound(sound) {
-      if (sound) {
-        const audio = new Audio(sound);
-        audio.play();
-      }
-    },
     init() {
       // set container
-      this.container = this.$refs.sceneContainerCow;
-
-      // add stats
-      // this.stats = new Stats();
-      // this.container.appendChild(this.stats.dom);
+      this.container = this.$refs.sceneContainerRabbit;
 
       // add camera
-      const fov = 80; // Field of view
+      const fov = 90; // Field of view
       const aspect = this.container.clientWidth / this.container.clientHeight;
       const near = 0.5; // the near clipping plane
       const far = 50; // the far clipping plane
       const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-      camera.position.set(10, 20, 20);
+      camera.position.set(10, 25, 20);
       this.camera = camera;
 
       // create scene
       this.scene = new THREE.Scene();
-      this.scene.background = new THREE.Color("skyblue");
+      this.scene.background = new THREE.Color("purple");
 
       // add lights
       const ambientLight = new THREE.HemisphereLight(
@@ -123,7 +109,7 @@ export default {
       const loader = new GLTFLoader();
 
       loader.load(
-        "/three-assets/cow/scene.gltf",
+        "/three-assets/rabbit/scene.gltf",
         (gltf) => {
           this.scene.add(gltf.scene);
         },
@@ -138,21 +124,19 @@ export default {
     detectClickMouse: function(event) {
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-      //		const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520");
-      //		audio.play();
-      const explain = document.querySelector("#detailsCow");
+      const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520");
+      audio.play();
+      const explain = document.querySelector("#detailsRabbit");
       explain.style.display = "block";
-      //alert("hhlo");
     },
     render() {
       raycaster.setFromCamera(mouse, this.camera);
-      const intersects = raycaster.intersectObjects(this.scene.children, true);
+      //   const intersects = raycaster.intersectObjects(this.scene.children, true);
 
-      for (let i = 0; i < intersects.length; i++) {
-        // intersects[i].object.material.color.set(0xff0000);
-      }
+      // //   for (let i = 0; i < intersects.length; i++) {
+      // //     intersects[i].object.material.color.set(0xff0000);
+      // //   }
       this.renderer.render(this.scene, this.camera);
-      //this.stats.update();
     },
   },
   mounted() {
@@ -177,7 +161,7 @@ li {
 a {
   color: #42b983;
 }
-#scene-containerCow {
+#scene-containerRabbit {
   height: 100%;
   position: relative;
 }
