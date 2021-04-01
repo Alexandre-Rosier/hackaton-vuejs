@@ -1,16 +1,25 @@
 <template>
-  <div id="scene-containerCow" ref="sceneContainerCow"></div>
+  <div
+    id="scene-containerCow"
+    ref="sceneContainerCow"
+    v-on:click="detectClickMouse"
+  ></div>
 </template>
 
 <script>
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-
 import Stats from "stats.js";
 
-// const raycaster = new THREE.Raycaster();
+const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
+
+// const listener = new THREE.AudioListener();
+// const sound = new THREE.Audio(listener);
+// const loaderSound = new THREE.AudioLoader();
+
+// console.log(loader);
 
 export default {
   name: "Cow",
@@ -44,7 +53,7 @@ export default {
 
       // create scene
       this.scene = new THREE.Scene();
-      this.scene.background = new THREE.Color("pink");
+      this.scene.background = new THREE.Color("skyblue");
 
       // add lights
       const ambientLight = new THREE.HemisphereLight(
@@ -80,10 +89,10 @@ export default {
         this.container.clientHeight
       );
 
+      // this.camera.add(listener);
+
       const loader = new GLTFLoader();
-      //   const dracoLoader = new DRACOLoader();
-      //   dracoLoader.setDecoderPath("/examples/js/libs/draco/");
-      //   loader.setDRACOLoader(dracoLoader);
+
       loader.load(
         "/three-assets/cow/scene.gltf",
         (gltf) => {
@@ -92,7 +101,6 @@ export default {
         undefined,
         undefined
       );
-
       this.renderer.setAnimationLoop(() => {
         this.render();
       });
@@ -101,14 +109,16 @@ export default {
     detectClickMouse: function(event) {
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520");
+      audio.play();
     },
     render() {
-      //   raycaster.setFromCamera(mouse, this.camera);
-      //   const intersects = raycaster.intersectObjects(this.scene.children, true);
-      //   console.log(intersects);
-      // for (let i = 0; i < intersects.length; i++) {
-      //   intersects[i].object.material.color.set(0xff0000);
-      // }
+      raycaster.setFromCamera(mouse, this.camera);
+      const intersects = raycaster.intersectObjects(this.scene.children, true);
+
+      for (let i = 0; i < intersects.length; i++) {
+        intersects[i].object.material.color.set(0xff0000);
+      }
       this.renderer.render(this.scene, this.camera);
       this.stats.update();
     },
@@ -136,6 +146,6 @@ a {
   color: #42b983;
 }
 #scene-containerCow {
-  height: 100vh;
+  height: 100%;
 }
 </style>
