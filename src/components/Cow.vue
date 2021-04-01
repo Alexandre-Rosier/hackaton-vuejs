@@ -100,12 +100,12 @@ export default {
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     },
     render() {
-      //   raycaster.setFromCamera(mouse, this.camera);
-      //   const intersects = raycaster.intersectObjects(this.scene.children, true);
-      //   // console.log(intersects);
-      //   for (let i = 0; i < intersects.length; i++) {
-      //     intersects[i].object.material.color.set(0xff0000);
-      //   }
+    //   raycaster.setFromCamera(mouse, this.camera);
+    //   const intersects = raycaster.intersectObjects(this.scene.children, true);
+    //   console.log(intersects);
+      // for (let i = 0; i < intersects.length; i++) {
+      //   intersects[i].object.material.color.set(0xff0000);
+      // }
       this.renderer.render(this.scene, this.camera);
       this.stats.update();
     },

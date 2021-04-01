@@ -1,26 +1,21 @@
 <template>
   <div id="app">
-    <h1 class="title-accueil">LES ANIMAUX DE LA FERME</h1>
-    <div class="container-img-accueil">
-      <img
-        class="img-accueil"
-        alt="animaux de la ferme"
-        src="./assets/ferme.jpg"
-      />
-    </div>
     <Slider />
     <HelloWorld />
-  </div>
+    <Cow/>
+      </div>
 </template>
 
 <script>
 import Slider from "./components/Slider.vue";
 import HelloWorld from "./components/HelloWorld.vue";
+import Cow from "./components/Cow.vue";
 export default {
   name: "App",
   components: {
     Slider,
     HelloWorld,
+    Cow
   },
 };
 </script>
@@ -46,11 +41,4 @@ body,
 	border-radius: 2px; */
 }
 
-.img-accueil {
-  height: 200px;
-  width: 200px;
-  box-shadow: 5px 5px 5px rgb(208, 247, 230);
-  border-radius: 500px;
-  opacity: 0.8;
-}
 </style>
