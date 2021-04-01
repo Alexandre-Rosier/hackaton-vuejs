@@ -24,12 +24,10 @@
           <img src="../assets/poulet.jpg" />
           <p>Le poulet</p>
         </div>
-
         <div class="animal-card">
           <img src="../assets/pig-47920_1280.png" />
           <p>Le cochon</p>
         </div>
-
         <div class="animal-card">
           <img src="../assets/cow.jpg" />
           <p>La vache</p>

@@ -1,6 +1,11 @@
 <template>
   <div id="app">
     <Slider />
+    <CowDescription />
+    <ChickenDescription />
+    <DonkeyDescription />
+    <PigDescription />
+    <GoatDescription />
     <HelloWorld />
     <Cow/>
     <Sheep/>
@@ -11,9 +16,17 @@
 <script>
 import Slider from "./components/Slider.vue";
 import HelloWorld from "./components/HelloWorld.vue";
+
 import Cow from "./components/Cow.vue";
 import Sheep from "./components/Sheep.vue";
 import Donkey from './components/Donkey.vue'
+
+import CowDescription from "./components/CowDescription.vue";
+import ChickenDescription from "./components/ChickenDescription.vue";
+import DonkeyDescription from "./components/DonkeyDescription.vue";
+import PigDescription from "./components/PigDescription.vue";
+import GoatDescription from "./components/GoatDescription.vue";
+
 export default {
   name: "App",
   components: {
@@ -21,7 +34,13 @@ export default {
     HelloWorld,
     Cow,
     Sheep,
-    Donkey
+    Donkey,
+    CowDescription,
+    ChickenDescription,
+    DonkeyDescription,
+    PigDescription,
+    GoatDescription
+
   },
 };
 </script>
@@ -40,11 +59,6 @@ body,
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  /* color: #2c3e50;
-	margin-top: 60px;
-	background-color: rgb(238, 211, 123);
-	border: 2px solid rgb(194, 235, 245);
-	border-radius: 2px; */
 }
 
 </style>
