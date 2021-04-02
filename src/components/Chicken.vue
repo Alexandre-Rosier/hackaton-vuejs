@@ -17,7 +17,6 @@
 							playSound('https://www.fesliyanstudios.com/play-mp3/6512')
 						"
 					>
-						Ecouter cette magnifique Poule.
 						<div class="pronom">la</div>
 						<div class="h1Name">POULE</div>
 					</button>
@@ -146,18 +145,16 @@ export default {
 	},
 	mounted() {
 		this.init();
-		const speakEl = document.getElementById("speakChicken");
-
-		speakEl.addEventListener("click", speakText);
-
+		const speakEl = document.getElementById('speakChicken');
+		speakEl.addEventListener('click', speakText);
 		function speakText() {
-			const utterance = new SpeechSynthesisUtterance(
-				"La poule est la femelle de l'espèce domestique des gallinacés. Le mâle est le coq. Originaire d'Asie, il existe aujourd'hui de très nombreuses races de poules partout dans le monde."
-			);
-			window.speechSynthesis.speak(utterance);
-		}
-	},
-};
+		const utterance = new SpeechSynthesisUtterance('La poule est la femelle de l\'espèce domestique des gallinacés. Le mâle est le coq. Originaire d\'Asie, il existe aujourd\'hui de très nombreuses races de poules partout dans le monde.');
+		utterance.lang = 'fr-FR';
+		utterance.rate =  0.7;
+		window.speechSynthesis.speak(utterance);
+	}
+}
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -180,4 +177,5 @@ a {
 	height: 100%;
 	position: relative;
 }
+
 </style>

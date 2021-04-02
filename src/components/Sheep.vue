@@ -148,16 +148,14 @@ export default {
 		this.init();
 		const speakEl = document.getElementById("speakSheep");
 
-		speakEl.addEventListener("click", speakText);
-
+		speakEl.addEventListener('click', speakText);
 		function speakText() {
-			const utterance = new SpeechSynthesisUtterance(
-				"Le mouton est un mammifère domestique herbivore qui bêle. La femelle est la brebis et le mâle est le bélier. Il est élevé pour sa viande, son lait, sa laine, sa graisse et sa peau."
-			);
-			window.speechSynthesis.speak(utterance);
-		}
-	},
-};
+    const utterance = new SpeechSynthesisUtterance('Le mouton est un mammifère domestique herbivore qui bêle. La femelle est la brebis et le mâle est le bélier. Il est élevé pour sa viande, son lait, sa laine, sa graisse et sa peau.');
+    utterance.lang = 'fr-FR';
+		utterance.rate =  0.7;
+		window.speechSynthesis.speak(utterance);
+	}
+}}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

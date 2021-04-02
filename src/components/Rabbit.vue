@@ -12,9 +12,14 @@
 			<section class="CardFlex">
 				<div class="title">
 					<!-- <img class="imgCard" src="../assets/rabbit.jpg" /> -->
-					Ecouter cette magnifique Lapin SILENCIEUX.
-					<div class="pronom">le</div>
-					<div class="h1Name">LAPIN</div>
+					<button
+						@click.prevent="
+							playSound('https://www.fesliyanstudios.com/play-mp3/3881')
+						"
+					>					
+						<div class="pronom">le</div>
+						<div class="h1Name">LAPIN</div>
+					</button>
 				</div>
 				<p class="text">
 					Le lapin est un petit <span>mammifère</span> proche du
@@ -143,16 +148,14 @@ export default {
 		this.init();
 		const speakEl = document.getElementById("speakRabbit");
 
-		speakEl.addEventListener("click", speakText);
-
+		speakEl.addEventListener('click', speakText);
 		function speakText() {
-			const utterance = new SpeechSynthesisUtterance(
-				"Le lapin est un petit mammifère proche du lièvre. Il est herbivore et appartient à la famille des léporidés. On le reconnait à ses grandes oreilles. son petit corps poilu. sa petite queue touffue et son petit museau qu'il remue."
-			);
-			window.speechSynthesis.speak(utterance);
-		}
-	},
-};
+    const utterance = new SpeechSynthesisUtterance('Le lapin est un petit mammifère proche du lièvre. Il est herbivore et appartient à la famille des léporidés. On le reconnait à ses grandes oreilles. son petit corps poilu. sa petite queue touffue et son petit museau qu\'il remue.');
+    utterance.lang = 'fr-FR';
+		utterance.rate =  0.7;
+		window.speechSynthesis.speak(utterance);
+	}
+}}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

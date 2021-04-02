@@ -16,7 +16,7 @@
 							playSound('https://bigsoundbank.com/UPLOAD/mp3/1551.mp3')
 						"
 					>
-						Ecouter ce magnifique âne.
+						
 						<div class="pronom">l'</div>
 						<div class="h1Name">ANE</div>
 					</button>
@@ -148,16 +148,15 @@ export default {
 		this.init();
 		const speakEl = document.getElementById("speakDonkey");
 
-		speakEl.addEventListener("click", speakText);
-
+		speakEl.addEventListener('click', speakText);
 		function speakText() {
-			const utterance = new SpeechSynthesisUtterance(
-				"L'âne est un mammifère appartenant à la famille des équidés. Son proche cousin est le cheval. La femelle est l'Anesse. Les bébés sont les ânons."
-			);
-			window.speechSynthesis.speak(utterance);
-		}
-	},
-};
+		const utterance = new SpeechSynthesisUtterance('L\'âne est un mammifère appartenant à la famille des équidés. Son proche cousin est le cheval. La femelle est l\'Anesse. Les bébés sont les ânons.');
+		window.speechSynthesis.speak(utterance);
+		utterance.lang = 'fr-FR';
+		utterance.rate =  0.7;
+		window.speechSynthesis.speak(utterance);
+	}
+}}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
