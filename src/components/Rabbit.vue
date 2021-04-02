@@ -181,4 +181,8 @@ a {
 #speakRabbit {
 font-size: 50px
 }
+.buttonSpeaker :hover {
+	background-color: lightblue;
+	border-radius: 50%;
+}
 </style>
