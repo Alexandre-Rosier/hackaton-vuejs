@@ -11,7 +11,7 @@
 		<div class="cardDetail" id="detailsChicken">
 			<section class="CardFlex">
 				<div class="title">
-					<img class="imgCard" src="../assets/poulet.gif" />
+					<!-- <img class="imgCard" src="../assets/poulet.gif" /> -->
 					<button
 						@click.prevent="
 							playSound('https://www.fesliyanstudios.com/play-mp3/6512')
@@ -29,7 +29,7 @@
 					aujourd'hui de très nombreuses races de poules partout dans le monde.
 				</p>
 			</section>
-			<div class="buttonSpeaker">  <button id="speakChicken">🔉</button>   </div>
+			<div class="buttonSpeaker"><button id="speakChicken">🔉</button></div>
 		</div>
 	</div>
 </template>
@@ -146,16 +146,18 @@ export default {
 	},
 	mounted() {
 		this.init();
-		const speakEl = document.getElementById('speakChicken');
+		const speakEl = document.getElementById("speakChicken");
 
-		speakEl.addEventListener('click', speakText);
+		speakEl.addEventListener("click", speakText);
 
 		function speakText() {
-
-const utterance = new SpeechSynthesisUtterance('La poule est la femelle de l\'espèce domestique des gallinacés. Le mâle est le coq. Originaire d\'Asie, il existe aujourd\'hui de très nombreuses races de poules partout dans le monde.');
-window.speechSynthesis.speak(utterance);
-	}
-}}
+			const utterance = new SpeechSynthesisUtterance(
+				"La poule est la femelle de l'espèce domestique des gallinacés. Le mâle est le coq. Originaire d'Asie, il existe aujourd'hui de très nombreuses races de poules partout dans le monde."
+			);
+			window.speechSynthesis.speak(utterance);
+		}
+	},
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
