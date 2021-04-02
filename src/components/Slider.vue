@@ -12,31 +12,31 @@
 		<div class="Slider">
 			<h2>Choisis un animal de la ferme</h2>
 			<div class="animal">
-				<a href="#scene-containerSheep">
-					<div class="animal-card">
+				<a v-scroll-to="`#scene-containerSheep`" href="#">
+					<div v-scroll-to="`#scene-containerSheep`" class="animal-card">
 						<img src="../assets/mouton.jpg" />
 						<p>Le mouton</p>
 					</div>
 				</a>
-				<a href="#scene-containerDonkey">
+				<a v-scroll-to="`#scene-containerDonkey`" href="#">
 					<div class="animal-card">
 						<img src="../assets/donkey.jpg" />
 						<p>L'âne</p>
 					</div>
 				</a>
-				<a href="#scene-containerChicken">
+				<a  v-scroll-to="`#scene-containerChicken`" href="#">
 					<div class="animal-card">
 						<img src="../assets/poulet.jpg" />
 						<p>Le poulet</p>
 					</div>
 				</a>
-				<a href="#scene-containerRabbit">
+				<a v-scroll-to="`#scene-containerRabbit`" href="#s">
 					<div class="animal-card">
 						<img src="../assets/rabbit.jpg" />
 						<p>Lapin</p>
 					</div>
 				</a>
-				<a href="#scene-containerCow">
+				<a v-scroll-to="`#scene-containerCow`" href="#">
 					<div class="animal-card">
 						<img src="../assets/cow.jpg" />
 						<p>La vache</p>
@@ -48,6 +48,9 @@
 </template>
 
 <script>
+
+
+
 export default {
 	name: "Slider",
 };
@@ -139,4 +142,5 @@ img {
 	border-radius: 500px;
 	opacity: 0.8;
 }
+
 </style>
