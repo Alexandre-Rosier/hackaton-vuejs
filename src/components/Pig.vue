@@ -4,14 +4,12 @@
 		ref="sceneContainerChicken"
 		v-on:click="detectClickMouse"
 	>
-		<a href="#" class="btnhome"
-			><img class="btnhomeimg" src="../assets/home.svg" />Retour
-		</a>
+		<a href="#" class="btnhome">Retour</a>
 
 		<div class="cardDetail" id="detailsChicken">
 			<section class="CardFlex">
 				<div class="title">
-					<!-- <img class="imgCard" src="../assets/poulet.gif" /> -->
+					<img class="imgCard" src="../assets/poulet.gif" />
 					<button
 						@click.prevent="
 							playSound('https://www.fesliyanstudios.com/play-mp3/6512')
@@ -29,7 +27,6 @@
 					aujourd'hui de très nombreuses races de poules partout dans le monde.
 				</p>
 			</section>
-			<div class="buttonSpeaker"><button id="speakChicken">🔉</button></div>
 		</div>
 	</div>
 </template>
@@ -51,16 +48,9 @@ export default {
 			camera: null,
 			controls: null,
 			renderer: null,
-			// model: null,
 		};
 	},
 	methods: {
-		playSound(sound) {
-			if (sound) {
-				const audio = new Audio(sound);
-				audio.play();
-			}
-		},
 		init() {
 			// set container
 			this.container = this.$refs.sceneContainerChicken;
@@ -117,31 +107,23 @@ export default {
 			const loader = new GLTFLoader();
 
 			loader.load(
-				"/three-assets/Chicken.glb",
+				"/three-assets/rapid/",
 				(gltf) => {
-					// this.model = gltf.scene;
 					this.scene.add(gltf.scene);
 				},
 				undefined,
 				undefined
 			);
-
 			this.renderer.setAnimationLoop(() => {
 				this.render();
 			});
-
-			function animate() {
-				requestAnimationFrame(animate);
-				const objet = this.gltf.scene;
-				objet.rotation.x += 0.01;
-				//objet.rotation.y += 0.01;
-			}
-			animate();
 		},
 
 		detectClickMouse: function(event) {
 			mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 			mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+			const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/6520");
+			audio.play();
 			const explain = document.querySelector("#detailsChicken");
 			explain.style.display = "block";
 		},
@@ -150,23 +132,13 @@ export default {
 			const intersects = raycaster.intersectObjects(this.scene.children, true);
 
 			for (let i = 0; i < intersects.length; i++) {
-				// intersects[i].object.material.color.set(0xff0000);
+				intersects[i].object.material.color.set(0xff0000);
 			}
 			this.renderer.render(this.scene, this.camera);
 		},
 	},
 	mounted() {
 		this.init();
-		const speakEl = document.getElementById("speakChicken");
-
-		speakEl.addEventListener("click", speakText);
-
-		function speakText() {
-			const utterance = new SpeechSynthesisUtterance(
-				"La poule est la femelle de l'espèce domestique des gallinacés. Le mâle est le coq. Originaire d'Asie, il existe aujourd'hui de très nombreuses races de poules partout dans le monde."
-			);
-			window.speechSynthesis.speak(utterance);
-		}
 	},
 };
 </script>
