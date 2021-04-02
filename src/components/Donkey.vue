@@ -179,4 +179,8 @@ a {
 	height: 100%;
 	position: relative;
 }
+
+#speakDonkey {
+	font-size: 50px
+}
 </style>

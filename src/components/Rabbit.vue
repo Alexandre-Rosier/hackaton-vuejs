@@ -178,4 +178,7 @@ a {
 	height: 100%;
 	position: relative;
 }
+#speakRabbit {
+font-size: 50px
+}
 </style>

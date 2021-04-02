@@ -180,4 +180,8 @@ a {
 	height: 100%;
 	position: relative;
 }
+
+#speakCow {
+	font-size: 50px
+}
 </style>
