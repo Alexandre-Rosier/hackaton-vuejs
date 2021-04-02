@@ -153,6 +153,9 @@ export default {
 		function speakText() {
 
 const utterance = new SpeechSynthesisUtterance('La poule est la femelle de l\'espèce domestique des gallinacés. Le mâle est le coq. Originaire d\'Asie, il existe aujourd\'hui de très nombreuses races de poules partout dans le monde.');
+utterance.lang = 'fr-FR';
+utterance.rate =  0.7;
+// utterance.voice = 0;
 window.speechSynthesis.speak(utterance);
 	}
 }}
@@ -179,20 +182,4 @@ a {
 	position: relative;
 }
 
-div {
-  width: 100px;
-  height: 50px;
-  background-color: red;
-  font-weight: bold;
-  position: relative;
-  animation: mymove 5s 1;
-}
-
-#div1 {animation-timing-function: linear;}
-
-
-@keyframes mymove {
-  from {left: 0px;}
-  to {left: 300px;}
-}
 </style>
