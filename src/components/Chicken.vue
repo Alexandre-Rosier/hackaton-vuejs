@@ -178,4 +178,21 @@ a {
 	height: 100%;
 	position: relative;
 }
+
+div {
+  width: 100px;
+  height: 50px;
+  background-color: red;
+  font-weight: bold;
+  position: relative;
+  animation: mymove 5s 1;
+}
+
+#div1 {animation-timing-function: linear;}
+
+
+@keyframes mymove {
+  from {left: 0px;}
+  to {left: 300px;}
+}
 </style>
