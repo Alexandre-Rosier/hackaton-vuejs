@@ -147,18 +147,15 @@ export default {
 	mounted() {
 		this.init();
 		const speakEl = document.getElementById('speakChicken');
-
 		speakEl.addEventListener('click', speakText);
-
 		function speakText() {
-
-const utterance = new SpeechSynthesisUtterance('La poule est la femelle de l\'espèce domestique des gallinacés. Le mâle est le coq. Originaire d\'Asie, il existe aujourd\'hui de très nombreuses races de poules partout dans le monde.');
-utterance.lang = 'fr-FR';
-utterance.rate =  0.7;
-// utterance.voice = 0;
-window.speechSynthesis.speak(utterance);
+		const utterance = new SpeechSynthesisUtterance('La poule est la femelle de l\'espèce domestique des gallinacés. Le mâle est le coq. Originaire d\'Asie, il existe aujourd\'hui de très nombreuses races de poules partout dans le monde.');
+		utterance.lang = 'fr-FR';
+		utterance.rate =  0.7;
+		window.speechSynthesis.speak(utterance);
 	}
-}}
+}
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -153,13 +153,12 @@ export default {
 	mounted() {
 		this.init();
 		const speakEl = document.getElementById('speakCow');
-
 		speakEl.addEventListener('click', speakText);
-
 		function speakText() {
-
-const utterance = new SpeechSynthesisUtterance('La vache est un animal ru minant. C\'est un mammifère qui appartient à la famille des bovidés. Le mâle de la vache est le taureau. Son petit est le veau.');
-window.speechSynthesis.speak(utterance);
+		const utterance = new SpeechSynthesisUtterance('La vache est un animal ru minant. C\'est un mammifère qui appartient à la famille des bovidés. Le mâle de la vache est le taureau. Son petit est le veau.');
+		utterance.lang = 'fr-FR';
+		utterance.rate =  0.7;
+		window.speechSynthesis.speak(utterance);
 	}
 }}
 </script>

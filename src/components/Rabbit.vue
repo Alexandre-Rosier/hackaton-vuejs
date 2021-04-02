@@ -140,11 +140,11 @@ export default {
 		const speakEl = document.getElementById('speakRabbit');
 
 		speakEl.addEventListener('click', speakText);
-
 		function speakText() {
-
-const utterance = new SpeechSynthesisUtterance('Le lapin est un petit mammifère proche du lièvre. Il est herbivore et appartient à la famille des léporidés. On le reconnait à ses grandes oreilles. son petit corps poilu. sa petite queue touffue et son petit museau qu\'il remue.');
-window.speechSynthesis.speak(utterance);
+    const utterance = new SpeechSynthesisUtterance('Le lapin est un petit mammifère proche du lièvre. Il est herbivore et appartient à la famille des léporidés. On le reconnait à ses grandes oreilles. son petit corps poilu. sa petite queue touffue et son petit museau qu\'il remue.');
+    utterance.lang = 'fr-FR';
+		utterance.rate =  0.7;
+		window.speechSynthesis.speak(utterance);
 	}
 }}
 </script>

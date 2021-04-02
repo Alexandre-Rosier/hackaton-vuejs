@@ -148,11 +148,12 @@ export default {
 		const speakEl = document.getElementById('speakDonkey');
 
 		speakEl.addEventListener('click', speakText);
-
 		function speakText() {
-
-const utterance = new SpeechSynthesisUtterance('L\'âne est un mammifère appartenant à la famille des équidés. Son proche cousin est le cheval. La femelle est l\'Anesse. Les bébés sont les ânons.');
-window.speechSynthesis.speak(utterance);
+		const utterance = new SpeechSynthesisUtterance('L\'âne est un mammifère appartenant à la famille des équidés. Son proche cousin est le cheval. La femelle est l\'Anesse. Les bébés sont les ânons.');
+		window.speechSynthesis.speak(utterance);
+		utterance.lang = 'fr-FR';
+		utterance.rate =  0.7;
+		window.speechSynthesis.speak(utterance);
 	}
 }}
 </script>
