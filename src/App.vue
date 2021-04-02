@@ -86,7 +86,7 @@ button .h1Name {
 
 button .pronom {
 	font-family: "Times New Roman", Times, serif;
-	font-size: 1.9vh;
+	font-size: 5vh;
 	font-style: italic;
 	color: grey;
 }
@@ -109,6 +109,7 @@ button {
 
 button :hover {
 	background-color: green;
+	border-radius: 10px;
 	color: white;
 }
 audio {
