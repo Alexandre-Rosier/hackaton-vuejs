@@ -29,6 +29,7 @@
 					aujourd'hui de très nombreuses races de poules partout dans le monde.
 				</p>
 			</section>
+			<div class="buttonSpeaker"><button id="speakChicken">🔉</button></div>
 		</div>
 	</div>
 </template>
@@ -145,6 +146,16 @@ export default {
 	},
 	mounted() {
 		this.init();
+		const speakEl = document.getElementById("speakChicken");
+
+		speakEl.addEventListener("click", speakText);
+
+		function speakText() {
+			const utterance = new SpeechSynthesisUtterance(
+				"La poule est la femelle de l'espèce domestique des gallinacés. Le mâle est le coq. Originaire d'Asie, il existe aujourd'hui de très nombreuses races de poules partout dans le monde."
+			);
+			window.speechSynthesis.speak(utterance);
+		}
 	},
 };
 </script>

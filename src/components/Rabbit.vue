@@ -11,24 +11,20 @@
 		<div class="cardDetail" id="detailsRabbit">
 			<section class="CardFlex">
 				<div class="title">
-					<!-- <img class="imgCard" src="../assets/poulet.gif" /> -->
-					<button
-						@click.prevent="
-							playSound('https://www.fesliyanstudios.com/play-mp3/6512')
-						"
-					>
-						Ecouter cette magnifique Lapin SILENCIEUX.
-						<div class="pronom">le</div>
-						<div class="h1Name">LAPIN</div>
-					</button>
+					<!-- <img class="imgCard" src="../assets/rabbit.jpg" /> -->
+					Ecouter cette magnifique Lapin SILENCIEUX.
+					<div class="pronom">le</div>
+					<div class="h1Name">LAPIN</div>
 				</div>
 				<p class="text">
-					La poule est la femelle de l'espèce domestique des
-					<span>gallinacés</span>.<br />
-					Le mâle est le <span>coq</span>. Originaire d'Asie, il existe
-					aujourd'hui de très nombreuses races de poules partout dans le monde.
+					Le lapin est un petit <span>mammifère</span> proche du
+					<span>lièvre</span>. Il est <span>herbivore</span> et appartient à la
+					famille des <span>léporidés</span>. On le reconnait à ses grandes
+					oreilles, son petit corps poilu, sa petite queue touffue et son petit
+					<span>museau</span> qu'il remue.
 				</p>
 			</section>
+			<div class="buttonSpeaker"><button id="speakRabbit">🔉</button></div>
 		</div>
 	</div>
 </template>
@@ -64,12 +60,12 @@ export default {
 			this.container = this.$refs.sceneContainerRabbit;
 
 			// add camera
-			const fov = 80; // Field of view
+			const fov = 100; // Field of view
 			const aspect = this.container.clientWidth / this.container.clientHeight;
 			const near = 0.5; // the near clipping plane
 			const far = 50; // the far clipping plane
 			const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-			camera.position.set(10, 20, 20);
+			camera.position.set(-30, 20, 30);
 			this.camera = camera;
 
 			// create scene
@@ -145,6 +141,16 @@ export default {
 	},
 	mounted() {
 		this.init();
+		const speakEl = document.getElementById("speakRabbit");
+
+		speakEl.addEventListener("click", speakText);
+
+		function speakText() {
+			const utterance = new SpeechSynthesisUtterance(
+				"Le lapin est un petit mammifère proche du lièvre. Il est herbivore et appartient à la famille des léporidés. On le reconnait à ses grandes oreilles. son petit corps poilu. sa petite queue touffue et son petit museau qu'il remue."
+			);
+			window.speechSynthesis.speak(utterance);
+		}
 	},
 };
 </script>

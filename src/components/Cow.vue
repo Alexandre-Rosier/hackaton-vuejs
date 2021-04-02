@@ -29,8 +29,8 @@
 					<span>taureau</span>. <br />
 					Son petit est le <span>veau</span>.
 				</p>
-				<button>Lire la fiche</button>
 			</section>
+			<div class="buttonSpeaker"><button id="speakCow">🔉</button></div>
 		</div>
 	</div>
 </template>
@@ -66,12 +66,12 @@ export default {
 			this.container = this.$refs.sceneContainerCow;
 
 			// add camera
-			const fov = 80; // Field of view
+			const fov = 110; // Field of view
 			const aspect = this.container.clientWidth / this.container.clientHeight;
 			const near = 0.5; // the near clipping plane
 			const far = 50; // the far clipping plane
 			const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-			camera.position.set(10, 20, 20);
+			camera.position.set(-25, 20, 20);
 			this.camera = camera;
 
 			// create scene
@@ -149,6 +149,16 @@ export default {
 	},
 	mounted() {
 		this.init();
+		const speakEl = document.getElementById("speakCow");
+
+		speakEl.addEventListener("click", speakText);
+
+		function speakText() {
+			const utterance = new SpeechSynthesisUtterance(
+				"La vache est un animal ru minant. C'est un mammifère qui appartient à la famille des bovidés. Le mâle de la vache est le taureau. Son petit est le veau."
+			);
+			window.speechSynthesis.speak(utterance);
+		}
 	},
 };
 </script>
