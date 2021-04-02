@@ -1,40 +1,42 @@
 <template>
 	<div class="accueil">
-		<h1 class="title-accueil">LES ANIMAUX DE LA FERME</h1>
+		<h1 class="title-accueil">Les animaux de la ferme</h1>
+
 		<div class="container-img-accueil">
-			<img
+			<!-- <img
 				class="img-accueil"
 				alt="animaux de la ferme"
 				src="../assets/ferme.jpg"
-			/>
+			/> -->
 		</div>
 		<div class="Slider">
+			<h2>Choisis un animal de la ferme</h2>
 			<div class="animal">
-				<a href="#scene-containerSheep">
-					<div class="animal-card">
+				<a v-scroll-to="`#scene-containerSheep`" href="#">
+					<div v-scroll-to="`#scene-containerSheep`" class="animal-card">
 						<img src="../assets/mouton.jpg" />
 						<p>Le mouton</p>
 					</div>
 				</a>
-				<a href="#scene-containerDonkey">
+				<a v-scroll-to="`#scene-containerDonkey`" href="#">
 					<div class="animal-card">
 						<img src="../assets/donkey.jpg" />
 						<p>L'âne</p>
 					</div>
 				</a>
-				<a href="#scene-containerChicken">
+				<a  v-scroll-to="`#scene-containerChicken`" href="#">
 					<div class="animal-card">
 						<img src="../assets/poulet.jpg" />
 						<p>Le poulet</p>
 					</div>
 				</a>
-				<a href="#scene-containerRabbit">
+				<a v-scroll-to="`#scene-containerRabbit`" href="#s">
 					<div class="animal-card">
 						<img src="../assets/rabbit.jpg" />
 						<p>Lapin</p>
 					</div>
 				</a>
-				<a href="#scene-containerCow">
+				<a v-scroll-to="`#scene-containerCow`" href="#">
 					<div class="animal-card">
 						<img src="../assets/cow.jpg" />
 						<p>La vache</p>
@@ -46,6 +48,9 @@
 </template>
 
 <script>
+
+
+
 export default {
 	name: "Slider",
 };
@@ -58,13 +63,28 @@ export default {
 	flex-direction: column;
 	justify-content: space-around;
 }
+.title-accueil {
+	font-family: "Dancing Script", cursive;
+	font-size: 6rem;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 .Slider {
-	background-color: rgb(234, 238, 234);
-	padding-bottom: 80px;
-	border-radius: 5px;
+	background-color: rgba(234, 238, 234, 0.609);
+	padding: 80px;
+	border-radius: 15px;
 	margin-left: 80px;
 	margin-right: 80px;
 	margin-bottom: 80px;
+	animation: fadeIn 5s ease;
 }
 
 .Slider a {
@@ -72,10 +92,11 @@ export default {
 }
 
 .animal {
-	padding-top: 80px;
 	justify-content: space-around;
 	display: flex;
 	margin: 0 10px;
+	margin: auto;
+	max-width: 920px;
 }
 .animal-card {
 	border: 1px solid orange;
@@ -83,9 +104,13 @@ export default {
 	padding: 20px 20px 20px 20px;
 	box-shadow: 10px 3px 20px rgba(255, 166, 0, 0.486);
 	color: rgb(35, 116, 35);
-	width: 70px;
-	height: 120px;
+	width: 120px;
+	height: 180px;
 	background: white;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	display: flex;
 }
 h3 {
 	margin: 40px 0 0;
@@ -102,8 +127,8 @@ a {
 	color: #42b983;
 }
 img {
-	width: 50px;
-	height: 50px;
+	width: 90px;
+	height: 90px;
 }
 
 .animal-card:hover {
@@ -117,4 +142,5 @@ img {
 	border-radius: 500px;
 	opacity: 0.8;
 }
+
 </style>

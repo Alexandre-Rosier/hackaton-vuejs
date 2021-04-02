@@ -5,30 +5,31 @@
 		v-on:click="detectClickMouse"
 	>
 		<a href="#" class="btnhome"
-      ><img class="btnhomeimg" src="../assets/home.svg" />Retour
-    </a>
+			><img class="btnhomeimg" src="../assets/home.svg" />Retour
+		</a>
 		<div class="cardDetail" id="detailsDonkey">
 			<section class="CardFlex">
 				<div class="title">
-					<img class="imgCard" src="../assets/donkey.gif" />
+					<!-- <img class="imgCard" src="../assets/donkey.gif" /> -->
 					<button
 						@click.prevent="
 							playSound('https://bigsoundbank.com/UPLOAD/mp3/1551.mp3')
 						"
 					>
-						Ecouter ce magnifique âne.
+						
 						<div class="pronom">l'</div>
 						<div class="h1Name">ANE</div>
 					</button>
 				</div>
 				<p class="text">
 					L'âne est un <span>mammifère</span> appartenant à la famille des
-					<span>équidés</span>.<br /> Son proche cousin est le <span>cheval</span>.
-					<br />La femelle est <span>l'Anesse</span> <br /> Les bébés sont les
-					<span>ânons</span>.
+					<span>équidés</span>.<br />
+					Son proche cousin est le <span>cheval</span>. <br />La femelle est
+					<span>l'Anesse</span> <br />
+					Les bébés sont les <span>ânons</span>.
 				</p>
 			</section>
-			<div class="buttonSpeaker">  <button id="speakDonkey">🔉</button>   </div>
+			<div class="buttonSpeaker"><button id="speakDonkey">🔉</button></div>
 		</div>
 	</div>
 </template>
@@ -145,7 +146,7 @@ export default {
 	},
 	mounted() {
 		this.init();
-		const speakEl = document.getElementById('speakDonkey');
+		const speakEl = document.getElementById("speakDonkey");
 
 		speakEl.addEventListener('click', speakText);
 		function speakText() {

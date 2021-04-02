@@ -1,26 +1,35 @@
 <template>
-  <div
-    id="scene-containerRabbit"
-    ref="sceneContainerRabbit"
-    v-on:click="detectClickMouse"
-  >
-    <a href="#" class="btnhome"
-      ><img class="btnhomeimg" src="../assets/home.svg" />Retour
-    </a>
+	<div
+		id="scene-containerRabbit"
+		ref="sceneContainerRabbit"
+		v-on:click="detectClickMouse"
+	>
+		<a href="#" class="btnhome"
+			><img class="btnhomeimg" src="../assets/home.svg" />Retour
+		</a>
 
-    <div class="cardDetail" id="detailsRabbit">
-      <section class="CardFlex">
-        <div class="title">
-          <img class="imgCard" src="../assets/rabbit.jpg" />
-            Ecouter cette magnifique Lapin SILENCIEUX.
-            <div class="pronom">le</div>
-            <div class="h1Name">LAPIN</div>
-        </div>
-        <p class="text">
-				Le lapin est un petit <span>mammifère</span> proche du <span>lièvre</span>. Il est <span>herbivore</span> et appartient à la famille des <span>léporidés</span>. On le reconnait à ses grandes oreilles, son petit corps poilu, sa petite queue touffue et son petit <span>museau</span> qu'il remue.
+		<div class="cardDetail" id="detailsRabbit">
+			<section class="CardFlex">
+				<div class="title">
+					<!-- <img class="imgCard" src="../assets/rabbit.jpg" /> -->
+					<button
+						@click.prevent="
+							playSound('https://www.fesliyanstudios.com/play-mp3/3881')
+						"
+					>					
+						<div class="pronom">le</div>
+						<div class="h1Name">LAPIN</div>
+					</button>
+				</div>
+				<p class="text">
+					Le lapin est un petit <span>mammifère</span> proche du
+					<span>lièvre</span>. Il est <span>herbivore</span> et appartient à la
+					famille des <span>léporidés</span>. On le reconnait à ses grandes
+					oreilles, son petit corps poilu, sa petite queue touffue et son petit
+					<span>museau</span> qu'il remue.
 				</p>
 			</section>
-		<div class="buttonSpeaker">  <button id="speakRabbit">🔉</button>   </div>
+			<div class="buttonSpeaker"><button id="speakRabbit">🔉</button></div>
 		</div>
 	</div>
 </template>
@@ -34,110 +43,110 @@ const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
 export default {
-  name: "Rabbit",
-  data() {
-    return {
-      container: null,
-      scene: null,
-      camera: null,
-      controls: null,
-      renderer: null,
-    };
-  },
-  methods: {
-    playSound(sound) {
-      if (sound) {
-        const audio = new Audio(sound);
-        audio.play();
-      }
-    },
-    init() {
-      // set container
-      this.container = this.$refs.sceneContainerRabbit;
+	name: "Rabbit",
+	data() {
+		return {
+			container: null,
+			scene: null,
+			camera: null,
+			controls: null,
+			renderer: null,
+		};
+	},
+	methods: {
+		playSound(sound) {
+			if (sound) {
+				const audio = new Audio(sound);
+				audio.play();
+			}
+		},
+		init() {
+			// set container
+			this.container = this.$refs.sceneContainerRabbit;
 
-      // add camera
-      const fov = 100; // Field of view
-      const aspect = this.container.clientWidth / this.container.clientHeight;
-      const near = 0.5; // the near clipping plane
-      const far = 50; // the far clipping plane
-      const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-      camera.position.set(-30, 20, 30);
-      this.camera = camera;
+			// add camera
+			const fov = 100; // Field of view
+			const aspect = this.container.clientWidth / this.container.clientHeight;
+			const near = 0.5; // the near clipping plane
+			const far = 50; // the far clipping plane
+			const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+			camera.position.set(-30, 20, 30);
+			this.camera = camera;
 
-      // create scene
-      this.scene = new THREE.Scene();
-      this.scene.background = new THREE.Color("skyblue");
+			// create scene
+			this.scene = new THREE.Scene();
+			this.scene.background = new THREE.Color("skyblue");
 
-      // add lights
-      const ambientLight = new THREE.HemisphereLight(
-        0xffffff, // bright sky color
-        0x222222, // dim ground color
-        1 // intensity
-      );
-      const mainLight = new THREE.DirectionalLight(0xffffff, 4.0);
-      mainLight.position.set(10, 10, 10);
-      this.scene.add(ambientLight, mainLight);
+			// add lights
+			const ambientLight = new THREE.HemisphereLight(
+				0xffffff, // bright sky color
+				0x222222, // dim ground color
+				1 // intensity
+			);
+			const mainLight = new THREE.DirectionalLight(0xffffff, 4.0);
+			mainLight.position.set(10, 10, 10);
+			this.scene.add(ambientLight, mainLight);
 
-      // add controls
-      this.controls = new OrbitControls(this.camera, this.container);
+			// add controls
+			this.controls = new OrbitControls(this.camera, this.container);
 
-      // create renderer
-      this.renderer = new THREE.WebGLRenderer({ antialias: true });
-      this.renderer.setSize(
-        this.container.clientWidth,
-        this.container.clientHeight
-      );
-      this.renderer.setPixelRatio(window.devicePixelRatio);
-      this.renderer.gammaFactor = 2.2;
-      this.renderer.outputEncoding = THREE.sRGBEncoding;
-      this.renderer.physicallyCorrectLights = true;
-      this.container.appendChild(this.renderer.domElement);
+			// create renderer
+			this.renderer = new THREE.WebGLRenderer({ antialias: true });
+			this.renderer.setSize(
+				this.container.clientWidth,
+				this.container.clientHeight
+			);
+			this.renderer.setPixelRatio(window.devicePixelRatio);
+			this.renderer.gammaFactor = 2.2;
+			this.renderer.outputEncoding = THREE.sRGBEncoding;
+			this.renderer.physicallyCorrectLights = true;
+			this.container.appendChild(this.renderer.domElement);
 
-      // set aspect ratio to match the new browser window aspect ratio
-      this.camera.aspect =
-        this.container.clientWidth / this.container.clientHeight;
-      this.camera.updateProjectionMatrix();
-      this.renderer.setSize(
-        this.container.clientWidth,
-        this.container.clientHeight
-      );
+			// set aspect ratio to match the new browser window aspect ratio
+			this.camera.aspect =
+				this.container.clientWidth / this.container.clientHeight;
+			this.camera.updateProjectionMatrix();
+			this.renderer.setSize(
+				this.container.clientWidth,
+				this.container.clientHeight
+			);
 
-      // this.camera.add(listener);
+			// this.camera.add(listener);
 
-      const loader = new GLTFLoader();
+			const loader = new GLTFLoader();
 
-      loader.load(
-        "/three-assets/Rabbit/scene.gltf",
-        (gltf) => {
-          this.scene.add(gltf.scene);
-        },
-        undefined,
-        undefined
-      );
-      this.renderer.setAnimationLoop(() => {
-        this.render();
-      });
-    },
+			loader.load(
+				"/three-assets/Rabbit/scene.gltf",
+				(gltf) => {
+					this.scene.add(gltf.scene);
+				},
+				undefined,
+				undefined
+			);
+			this.renderer.setAnimationLoop(() => {
+				this.render();
+			});
+		},
 
-    detectClickMouse: function(event) {
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-      const explain = document.querySelector("#detailsRabbit");
-      explain.style.display = "block";
-    },
-    render() {
-      raycaster.setFromCamera(mouse, this.camera);
-      const intersects = raycaster.intersectObjects(this.scene.children, true);
+		detectClickMouse: function(event) {
+			mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+			mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+			const explain = document.querySelector("#detailsRabbit");
+			explain.style.display = "block";
+		},
+		render() {
+			raycaster.setFromCamera(mouse, this.camera);
+			const intersects = raycaster.intersectObjects(this.scene.children, true);
 
-      for (let i = 0; i < intersects.length; i++) {
-        // intersects[i].object.material.color.set(0xff0000);
-      }
-      this.renderer.render(this.scene, this.camera);
-    },
-  },
-  mounted() {
+			for (let i = 0; i < intersects.length; i++) {
+				// intersects[i].object.material.color.set(0xff0000);
+			}
+			this.renderer.render(this.scene, this.camera);
+		},
+	},
+	mounted() {
 		this.init();
-		const speakEl = document.getElementById('speakRabbit');
+		const speakEl = document.getElementById("speakRabbit");
 
 		speakEl.addEventListener('click', speakText);
 		function speakText() {
@@ -152,21 +161,21 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
-  margin: 40px 0 0;
+	margin: 40px 0 0;
 }
 ul {
-  list-style-type: none;
-  padding: 0;
+	list-style-type: none;
+	padding: 0;
 }
 li {
-  display: inline-block;
-  margin: 0 10px;
+	display: inline-block;
+	margin: 0 10px;
 }
 a {
-  color: #42b983;
+	color: #42b983;
 }
 #scene-containerRabbit {
-  height: 100%;
-  position: relative;
+	height: 100%;
+	position: relative;
 }
 </style>

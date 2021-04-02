@@ -11,13 +11,12 @@
 		<div class="cardDetail" id="detailsChicken">
 			<section class="CardFlex">
 				<div class="title">
-					<img class="imgCard" src="../assets/poulet.gif" />
+					<!-- <img class="imgCard" src="../assets/poulet.gif" /> -->
 					<button
 						@click.prevent="
 							playSound('https://www.fesliyanstudios.com/play-mp3/6512')
 						"
 					>
-						Ecouter cette magnifique Poule.
 						<div class="pronom">la</div>
 						<div class="h1Name">POULE</div>
 					</button>
@@ -29,7 +28,7 @@
 					aujourd'hui de très nombreuses races de poules partout dans le monde.
 				</p>
 			</section>
-			<div class="buttonSpeaker">  <button id="speakChicken">🔉</button>   </div>
+			<div class="buttonSpeaker"><button id="speakChicken">🔉</button></div>
 		</div>
 	</div>
 </template>

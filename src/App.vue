@@ -41,6 +41,7 @@ body,
 	padding: 0;
 	height: 100%;
 	width: 100%;
+	background: #87ceeb85;
 }
 #app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -55,6 +56,9 @@ body,
 	color: rgb(35, 116, 35);
 	margin: 20px;
 	padding: 2rem;
+	/* visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s, opacity 0.5s linear; */
 	display: none;
 	z-index: 200;
 	position: absolute;
