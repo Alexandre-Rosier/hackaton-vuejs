@@ -4,6 +4,7 @@
 		ref="sceneContainerChicken"
 		v-on:click="detectClickMouse"
 	>
+	
 		<a href="#" class="btnhome"
 			><img class="btnhomeimg" src="../assets/home.svg" />Retour
 		</a>
@@ -148,9 +149,9 @@ export default {
 		const speakEl = document.getElementById('speakChicken');
 		speakEl.addEventListener('click', speakText);
 		function speakText() {
-		const utterance = new SpeechSynthesisUtterance('La poule est la femelle de l\'espèce domestique des gallinacés. Le mâle est le coq. Originaire d\'Asie, il existe aujourd\'hui de très nombreuses races de poules partout dans le monde.');
-		utterance.lang = 'fr-FR';
-		utterance.rate =  0.7;
+		const utterance = new SpeechSynthesisUtterance('Kura jest samicą domowego gatunku Gallinacea. Samiec to kogut. Pochodząca z Azji, obecnie na całym świecie istnieje bardzo wiele ras kurczaków.');
+		utterance.lang = 'pl-PL';
+		utterance.rate =  1;
 		window.speechSynthesis.speak(utterance);
 	}
 }

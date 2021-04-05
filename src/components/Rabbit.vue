@@ -12,11 +12,7 @@
 			<section class="CardFlex">
 				<div class="title">
 					<!-- <img class="imgCard" src="../assets/rabbit.jpg" /> -->
-					<button
-						@click.prevent="
-							playSound('https://www.fesliyanstudios.com/play-mp3/3881')
-						"
-					>					
+					<button>					
 						<div class="pronom">le</div>
 						<div class="h1Name">LAPIN</div>
 					</button>
